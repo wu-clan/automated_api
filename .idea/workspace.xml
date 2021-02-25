@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a46bbf9c-94ec-4cc4-909b-127e1bbd90f9" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitee/ISSUE_TEMPLATE.zh-CN.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitee/PULL_REQUEST_TEMPLATE.zh-CN.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/bin/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/bin/run_all.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/conf/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/conf/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/data/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/data/testcase.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/HTMLTestReportCN.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/HTMLTestRunner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/assert_res.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/global_variables.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/logger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/parameter_substitution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/read_excel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/lib/tools.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/log/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/report/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/test_case/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface one/test_case/test_cases.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.en.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1oxvtPN4IzJMimiKi9IjuvR7LqO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2723" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614241549741">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state x="2723" y="320" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1614241549741" />
+    <state x="2460" y="254" key="IDE.errors.dialog" timestamp="1614241515410">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state x="2460" y="254" key="IDE.errors.dialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1614241515410" />
+  </component>
+</project>
