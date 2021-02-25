@@ -13,6 +13,3 @@ def parameter_substitution(strParam):
         value = gv.getVar(key)
         strParam = strParam.replace('${' + key + '}', str(value))  # replace返回替换后的新字符串
     return strParam
-if __name__ == '__main__':
-    strParam = parameter_substitution("http://127.0.0.1:9999/login2")
-    print(strParam)

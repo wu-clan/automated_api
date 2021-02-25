@@ -1,0 +1,16 @@
+[2021-02-25 16:51:18,530] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:23 , ==========【当前执行用例是：case_1：test_user_query_ok】==========
+[2021-02-25 16:51:18,564] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:30 , > > > > >请求的method是：get
+[2021-02-25 16:51:18,564] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:31 , > > > > >请求的url是：http://127.0.0.1:8091/api/v1/user/queryById
+[2021-02-25 16:51:18,565] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:32 , > > > > >请求的headers是：
+[2021-02-25 16:51:18,565] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:33 , > > > > >请求的cookies是：
+[2021-02-25 16:51:18,565] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:34 , > > > > >请求的params是：{"userId": "666"}
+[2021-02-25 16:51:18,565] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:35 , > > > > >请求的body是：
+[2021-02-25 16:51:18,565] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:36 , > > > > >断言内容assertRes是：$..code=0;
+[2021-02-25 16:59:36,169] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:23 , ==========【当前执行用例是：case_1：test_user_query_ok】==========
+[2021-02-25 16:59:36,169] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:30 , > > > > >请求的method是：get
+[2021-02-25 16:59:36,169] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:31 , > > > > >请求的url是：http://127.0.0.1:8091/api/v1/user/queryById
+[2021-02-25 16:59:36,169] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:32 , > > > > >请求的headers是：
+[2021-02-25 16:59:36,170] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:33 , > > > > >请求的cookies是：
+[2021-02-25 16:59:36,170] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:34 , > > > > >请求的params是：{"userId": "666"}
+[2021-02-25 16:59:36,170] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:35 , > > > > >请求的body是：
+[2021-02-25 16:59:36,170] [DEBUG] [D:\Python_projects_git\automation_interface\test_case\test_cases.py : test_my_request_:36 , > > > > >断言内容assertRes是：$..code=0;

@@ -23,7 +23,6 @@ HOST_INFO = {
 }
 
 # 当前要运行的sheet名
-# SHEET_NAME = "lc"
 SHEET_NAME = "Sheet1"
 
 # sheet名及索引
