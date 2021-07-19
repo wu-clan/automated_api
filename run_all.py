@@ -1,52 +1,38 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# _*_ coding:utf-8 _*_
 
-import os
-import sys
-import time
-import unittest
+import os,sys
+sys.path.append(os.path.dirname(__file__))
+from config import setting
+import unittest,time
+from HTMLTestRunner import HTMLTestRunner
+from lib.sendmail import send_mail
+from lib.newReport import new_report
+from db_fixture import test_data
+from package.HTMLTestRunner import HTMLTestRunner
 
-# 导入配置文件中定义的测试报告的路径
-# 导入配置文件中定义的测试用例的路径
-from conf.settings import REPORT_PATH, TESTCASE_PATH
-from lib.HTMLTestReportCN import HTMLTestRunner as hr2
-# 导入报告模板
-from lib.HTMLTestRunner import HTMLTestRunner as hr1
+def add_case(test_path=setting.TEST_CASE):
+    """加载所有的测试用例"""
+    discover = unittest.defaultTestLoader.discover(test_path, pattern='*API.py')
+    return discover
 
-# 获取项目的根目录
-path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# print(path)
-sys.path.insert(0, path)
+def run_case(all_case,result_path=setting.TEST_REPORT):
+    """执行所有的测试用例"""
 
-# 自动根据测试用例的路径匹配查找测试用例文件（*.py）,并将查找到的测试用例组装到测试套件中
-suit = unittest.defaultTestLoader.discover(TESTCASE_PATH, pattern='test_*.py')
-# print(suit)
+    # 初始化接口测试数据
+    test_data.init_data()
 
-if __name__ == '__main__':
-    # 获取当前时间并指定时间格式
-    now = time.strftime("%Y-%m-%d_%H_%M_%S")
-    # 创建报告文件
-    fp = open(REPORT_PATH + now + "_report.html", 'wb')
-    # fp = open(REPORT_PATH + "_report_all.html", 'wb')
-    runner = hr2(
-        stream=fp,
-        title=u'接口自动化测试报告',
-        description=u'win10 64',
-        tester="wu")
-    runner.run(suit)
+    now = time.strftime("%Y-%m-%d %H_%M_%S")
+    filename =  result_path + '/' + now + 'result.html'
+    fp = open(filename,'wb')
+    runner = HTMLTestRunner(stream=fp,title='发布会系统接口自动化测试报告',
+                            description='环境：windows 7 浏览器：chrome',
+                            tester='Jason')
+    runner.run(all_case)
     fp.close()
+    report = new_report(setting.TEST_REPORT) #调用模块生成最新的报告
+    send_mail(report) #调用发送邮件模块
 
-    # import os, sys, re
-    # path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    # sys.path.insert(0, path)
-    # from conf.settings import DATA_PATH
-    #
-    # dirs = os.listdir(DATA_PATH)
-    # print(dirs)  # ['testcase.xlsx', '~$testcase.xlsx']
-    # for i in range(len(dirs)):
-    #     path = os.path.join(DATA_PATH, dirs[i])  # 遍历目录下的所有文件
-    #     print(path)
-    #     if os.path.isfile(path):
-    #         list_name = re.findall('test(.*?).xls', path)
-    #         name = list_name[0]
-    #         print(name)
+if __name__ =="__main__":
+    cases = add_case()
+    run_case(cases)

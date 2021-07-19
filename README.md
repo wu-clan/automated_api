@@ -1,26 +1,16 @@
-# python版接口自动化测试框架（unittest + 关联 + excle + ddt）
+# python接口自动化测试框架
 
 ## 设计思路
-- unittest + 关联 + excle + ddt
+- python3 + selenium3 + unittest + ddt + requests
 
 ## 目录结构介绍
-- bin：可执行文件，程序入口
-- conf：配置文件，各种路径配置、ip、端口等
-- data：测试数据excel
-- lib：工具库
-- reprot：测试报告
-- test_case：测试用例
-- log：日志文件
-- README.md：说明文件
+- config/: 文件路径配置
+- database/: 测试用例模板文件及数据库和发送邮箱配置文件
+- db_fixture/: 初始化接口测试数据
+- lib/: 程序核心模块。包含有excel解析读写、发送邮箱、发送请求、生成最新测试报告文件
+- package/: 存放第三方库包。如HTMLTestRunner，用于生成HTML格式测试报告
+- report/: 生成接口自动化测试报告
+- testcase/: 用于编写接口自动化测试用例
+- run_demo.py: 执行所有接口测试用例的主程序
 
-
-## 主要技术栈
-- requests
-- unittest
-- ddt
-- xlrd
-
-## 待扩展功能
-- **数据初始化**：比如要登录，保证有正确的账号，新增数据，要保证被新增的数据不存在；其实，业务数据基本上在流程测试过程中就依赖获取到了
-- **测试结果反写excel**：非必须功能
 
