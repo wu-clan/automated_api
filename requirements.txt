@@ -1,0 +1,5 @@
+pymysql~=1.0.2
+xlrd~=1.2.0
+openpyxl~=3.0.7
+ddt~=1.4.2
+requests~=2.25.1
