@@ -12,7 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 class SendRequests():
 	"""发送请求数据"""
 
-	def sendRequests(self, s, apiData):
+	def sendRequests(self, send, apiData):
 		try:
 			# 从读取的表格中获取响应的参数作为传递
 			method = apiData["method"]
@@ -39,7 +39,7 @@ class SendRequests():
 				body = body_data
 
 			# 发送请求
-			re = s.request(method=method, url=url, headers=h, params=par, data=body, verify=v)
+			re = send.request(method=method, url=url, headers=h, params=par, data=body, verify=v)
 			return re
 		except Exception as e:
 			print(e)
