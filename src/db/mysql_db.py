@@ -9,7 +9,7 @@ import sys
 from pymysql import connect, cursors
 from pymysql.err import OperationalError
 
-from DemoAPI.config import setting
+from src.config import setting
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 

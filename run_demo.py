@@ -6,12 +6,12 @@ import sys
 import time
 import unittest
 
-from DemoAPI.config import setting
-from DemoAPI.db import test_data
-from DemoAPI.models.newReport import new_report
-from DemoAPI.models.sendmail import send_mail
-from DemoAPI.models.writeexcel import WriteExcel
-from DemoAPI.packages.TestRunner import HTMLTestRunner
+from src.config import setting
+from src.db import test_data
+from src.models.newReport import new_report
+from src.models.sendmail import send_mail
+from src.models.writeexcel import WriteExcel
+from src.packages.TestRunner import HTMLTestRunner
 
 sys.path.append(os.path.dirname(__file__))
 

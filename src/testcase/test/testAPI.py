@@ -8,10 +8,10 @@ import requests
 import sys
 import unittest
 
-from DemoAPI.config import setting
-from DemoAPI.models.readexcel import ReadExcel
-from DemoAPI.models.sendrequests import SendRequests
-from DemoAPI.models.writeexcel import WriteExcel
+from src.config import setting
+from src.models.readexcel import ReadExcel
+from src.models.sendrequests import SendRequests
+from src.models.writeexcel import WriteExcel
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 

@@ -6,7 +6,7 @@ import os
 import sys
 import time
 
-from DemoAPI.db.mysql_db import DB
+from src.db.mysql_db import DB
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 

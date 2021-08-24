@@ -9,8 +9,8 @@ import sys
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from DemoAPI.config import setting
-from DemoAPI.models.newReport import new_report
+from src.config import setting
+from src.models.newReport import new_report
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 

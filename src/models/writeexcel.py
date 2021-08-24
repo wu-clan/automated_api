@@ -5,7 +5,7 @@ __author__ = 'YinJia'
 import os
 import sys
 
-from DemoAPI.config import setting
+from src.config import setting
 
 import shutil
 from openpyxl import load_workbook
