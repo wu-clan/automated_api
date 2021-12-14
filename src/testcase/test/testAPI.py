@@ -8,14 +8,14 @@ import requests
 import sys
 import unittest
 
-from src.config import setting
-from src.models.readexcel import ReadExcel
-from src.models.sendrequests import SendRequests
-from src.models.writeexcel import WriteExcel
+from src.core import settings
+from src.common.readexcel import ReadExcel
+from src.common.sendrequests import SendRequests
+from src.common.writeexcel import WriteExcel
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-testData = ReadExcel(setting.SOURCE_FILE, "Sheet1").read_data()
+testData = ReadExcel(settings.SOURCE_FILE, "Sheet1").read_data()
 
 
 @ddt.ddt
@@ -47,11 +47,11 @@ class Demo_API(unittest.TestCase):
 		if readData_code == self.result['status'] and readData_msg == self.result['message']:
 			OK_data = "PASS"
 			print("用例测试结果:  {0}---->{1}".format(data['ID'], OK_data))
-			WriteExcel(setting.TARGET_FILE).write_data(rowNum + 1, OK_data)
+			WriteExcel(settings.TARGET_FILE).write_data(rowNum + 1, OK_data)
 		if readData_code != self.result['status'] or readData_msg != self.result['message']:
 			NOT_data = "FAIL"
 			print("用例测试结果:  {0}---->{1}", format(data['ID'], NOT_data))
-			WriteExcel(setting.TARGET_FILE).write_data(rowNum + 1, NOT_data)
+			WriteExcel(settings.TARGET_FILE).write_data(rowNum + 1, NOT_data)
 		self.assertEqual(self.result['status'], readData_code, "返回实际结果是->:%s" % self.result['status'])
 		self.assertEqual(self.result['message'], readData_msg, "返回实际结果是->:%s" % self.result['message'])
 

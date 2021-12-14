@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-__author__ = 'xiaowu'
 
 import xlrd
+
+from src.common.log import logger
 
 '''
 xlrd 最新版不再支持 xlsx 文件，只支持 xls,如果使用xlrd, 则需要使用旧版本 1.2.0
@@ -22,21 +23,21 @@ class ReadExcel:
 		self.table = self.data.sheet_by_name(SheetName)
 
 		# 获取总行数、总列数
-		self.nrows = self.table.nrows
-		self.ncols = self.table.ncols
+		self.rows = self.table.nrows
+		self.cols = self.table.ncols
 
 	def read_data(self):
-		if self.nrows > 1:
+		if self.rows > 1:
 			# 获取第一行的内容，列表格式
 			keys = self.table.row_values(0)
-			listApiData = []
+			data_list = []
 			# 获取每一行的内容，列表格式
-			for col in range(1, self.nrows):
+			for col in range(1, self.rows):
 				values = self.table.row_values(col)
 				# keys，values组合转换为字典
 				api_dict = dict(zip(keys, values))
-				listApiData.append(api_dict)
-			return listApiData
+				data_list.append(api_dict)
+			return data_list
 		else:
-			print("表格是空数据!")
+			logger.warning("数据表格没有数据!")
 			return None

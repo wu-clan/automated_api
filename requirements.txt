@@ -1,5 +1,7 @@
-pymysql~=1.0.2
-xlrd~=1.2.0
-openpyxl~=3.0.7
-ddt~=1.4.2
-requests~=2.25.1
+pymysql==1.0.2
+xlrd==1.2.0
+openpyxl==3.0.7
+ddt==1.4.2
+requests==2.25.1
+loguru==0.5.3
+jinja2==3.0.0
