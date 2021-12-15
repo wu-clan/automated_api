@@ -1,60 +1,49 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-__author__ = 'YinJia'
-
-import ddt
-import os
-import requests
-import sys
 import unittest
 
-from src.core import settings
-from src.common.readexcel import ReadExcel
-from src.common.sendrequests import SendRequests
-from src.common.writeexcel import WriteExcel
+import ddt
+import requests
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from src.common.excel_report import WriteExcel
+from src.common.log import log
+from src.common.read_excel import ReadExcel
+from src.common.send_requests import SendRequests
+from src.core.path_settings import TEMPLATE_FILE
 
-testData = ReadExcel(settings.SOURCE_FILE, "Sheet1").read_data()
+testData = ReadExcel(TEMPLATE_FILE).read_data()
 
 
 @ddt.ddt
 class Demo_API(unittest.TestCase):
 	"""发布会系统"""
 
-	def setUp(self):
-		self.s = requests.session()
-
-	def tearDown(self):
-		pass
-
 	@ddt.data(*testData)
-	def test_api(self, data):
+	def test_api1(self, data):
 		# 获取ID字段数值，截取结尾数字并去掉开头0
 		rowNum = int(data['ID'].split("_")[2])
-		print("******* 正在执行用例 ->{0} *********".format(data['ID']))
-		print("请求方式: {0}，请求URL: {1}".format(data['method'], data['url']))
-		print("请求参数: {0}".format(data['params']))
-		print("post请求body类型为：{0} ,body内容为：{1}".format(data['type'], data['body']))
+		log.info(f"---------- 正在执行用例 -> {data['ID']} ----------")
+		log.info(f"请求方式: {data['method']}，请求URL: {data['url']}")
+		log.info(f"请求参数: {data['params']}")
+		log.info(f"请求body类型为：{data['type']} ,body内容为：{data['body']}")
 		# 发送请求
-		re = SendRequests().sendRequests(self.s, data)
+		re = SendRequests().send_requests_by_excel(data)
 		# 获取服务端返回的值
-		self.result = re.json()
-		print("页面返回信息：%s" % re.content.decode("utf-8"))
+		result = re.json()
+		code = int(result['code'])
+		msg = str(result['msg'])
+		log.info("页面返回信息：%s" % re.content.decode("utf-8"))
 		# 获取excel表格数据的状态码和消息
-		readData_code = int(data["status_code"])
-		readData_msg = data["msg"]
-		if readData_code == self.result['status'] and readData_msg == self.result['message']:
-			OK_data = "PASS"
-			print("用例测试结果:  {0}---->{1}".format(data['ID'], OK_data))
-			WriteExcel(settings.TARGET_FILE).write_data(rowNum + 1, OK_data)
-		if readData_code != self.result['status'] or readData_msg != self.result['message']:
-			NOT_data = "FAIL"
-			print("用例测试结果:  {0}---->{1}", format(data['ID'], NOT_data))
-			WriteExcel(settings.TARGET_FILE).write_data(rowNum + 1, NOT_data)
-		self.assertEqual(self.result['status'], readData_code, "返回实际结果是->:%s" % self.result['status'])
-		self.assertEqual(self.result['message'], readData_msg, "返回实际结果是->:%s" % self.result['message'])
+		read_code = int(data["status_code"])
+		read_msg = data["msg"]
+		if read_code == code and read_msg == msg:
+			status = 'PASS'
+			log.success(f"用例测试结果:  {data['ID']} ----> {status}")
+			WriteExcel().write_data(rowNum + 1, status)
+		if read_code != code or read_msg != msg:
+			status = 'FAIL'
+			log.error(f"用例测试结果:  {data['ID']} ----> {status}")
+			WriteExcel().write_data(rowNum + 1, status)
+		self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
+		self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
 
-
-if __name__ == '__main__':
-	unittest.main()

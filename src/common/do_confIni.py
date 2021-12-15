@@ -15,8 +15,14 @@ class DoConfIni(object):
         """
         self.cf = configparser.ConfigParser()
 
-    # 获取文件值
     def get_conf_value(self, filename, section, name):
+        """
+        获取文件值
+        :param filename:
+        :param section:
+        :param name:
+        :return:
+        """
         try:
             self.cf.read(filename, encoding='utf-8')
             value = self.cf.get(section, name)
@@ -27,8 +33,15 @@ class DoConfIni(object):
             print('Read configuration file [%s] success' % value)
             return value
 
-    # 写入文件值
     def write_conf_value(self, filename, section, name, value):
+        """
+        写入文件值
+        :param filename:
+        :param section:
+        :param name:
+        :param value:
+        :return:
+        """
         try:
             self.cf.add_section(section)
             self.cf.set(section, name, value)

@@ -6,19 +6,20 @@ import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from src.core.settings import EMAIL_FROM, EMAIL_HOST_SERVER, EMAIL_PASSWORD, EMAIL_TO, EMAIL_USER, RESULT_TITLE, \
-    TEST_REPORT_PATH
-from src.common.log import logger
+from src.common.log import log
+from src.core.path_settings import EMAIL_FROM, EMAIL_HOST_SERVER, EMAIL_PASSWORD, EMAIL_PORT, EMAIL_TO, EMAIL_USER, \
+    HTML_REPORT, \
+    RESULT_TITLE
 
 
 class SendMail:
 
     def _get_report(self):
         """获取最新测试报告"""
-        self.dirs = os.listdir(TEST_REPORT_PATH)
+        self.dirs = os.listdir(HTML_REPORT)
         self.dirs.sort()
         report = self.dirs[-1]
-        logger.info(f'The report name is: {report}')
+        log.info(f'获取测试报告: {report}')
         return report
 
     def _take_messages(self):
@@ -28,7 +29,7 @@ class SendMail:
         self.msg['date'] = time.strftime('%a, %d %b %Y %H:%M:%S %z')
 
         # 读取要发送的附件
-        with open(os.path.join(TEST_REPORT_PATH, self._get_report()), 'rb') as f:
+        with open(os.path.join(HTML_REPORT, self._get_report()), 'rb') as f:
             mail_body = str(f.read())
 
         # 邮件正文
@@ -45,13 +46,13 @@ class SendMail:
         """发送邮件"""
         self._take_messages()
         try:
-            smtp = smtplib.SMTP(EMAIL_HOST_SERVER, 25)
+            smtp = smtplib.SMTP(EMAIL_HOST_SERVER, EMAIL_PORT)
             smtp.login(EMAIL_USER, EMAIL_PASSWORD)
             smtp.sendmail(EMAIL_FROM, EMAIL_TO, self.msg.as_string())
             smtp.close()
-            logger.success("测试报告邮件发送成功")
+            log.success("测试报告邮件发送成功")
         except Exception as e:
-            logger.error('测试报告邮件发送失败\n', e)
+            log.error(f'测试报告邮件发送失败\n{e}')
 
 
 if __name__ == '__main__':

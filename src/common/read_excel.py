@@ -3,7 +3,7 @@
 
 import xlrd
 
-from src.common.log import logger
+from src.common.log import log
 
 '''
 xlrd 最新版不再支持 xlsx 文件，只支持 xls,如果使用xlrd, 则需要使用旧版本 1.2.0
@@ -19,14 +19,20 @@ class ReadExcel:
 	"""读取excel文件数据"""
 
 	def __init__(self, fileName, SheetName="Sheet1"):
+		"""
+		:param fileName: 文件名
+		:param SheetName: 文件标签页
+		"""
 		self.data = xlrd.open_workbook(fileName)
 		self.table = self.data.sheet_by_name(SheetName)
-
 		# 获取总行数、总列数
 		self.rows = self.table.nrows
 		self.cols = self.table.ncols
 
 	def read_data(self):
+		"""
+		:return: 文件数据
+		"""
 		if self.rows > 1:
 			# 获取第一行的内容，列表格式
 			keys = self.table.row_values(0)
@@ -39,5 +45,5 @@ class ReadExcel:
 				data_list.append(api_dict)
 			return data_list
 		else:
-			logger.warning("数据表格没有数据!")
+			log.warning("数据表格没有数据!")
 			return None

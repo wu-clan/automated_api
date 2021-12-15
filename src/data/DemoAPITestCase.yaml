@@ -1,0 +1,42 @@
+model: 查询QQ
+  ID: event_query_001
+  UseCase: qq信息查询
+  method: get
+  url: https://api.muxiaoguo.cn/api/QqInfo/
+  params: {"qq": "2186656812"}
+  headers:
+  body:
+  type: data # data / json / Any
+  status_code: 200
+  msg: success
+  result:
+  tester:
+---
+model: 查询头像
+  ID: event_query_002
+  UseCase: 获取pc头像
+  method: post
+  url: http://127.0.0.1:8000/api/get_event_list/
+  params: {"method": "pc"}
+  headers:
+  body:
+  type:
+  status_code: 200
+  msg: success
+  result:
+  tester:
+---
+model: 查询语录
+  ID: event_query_003
+  UseCase: 舔🐕语录
+  method: get
+  url: http://127.0.0.1:8000/api/get_event_list/
+  params:
+  headers:
+  body:
+  type:
+  status_code: 200
+  msg: success
+  result:
+  tester:
+---

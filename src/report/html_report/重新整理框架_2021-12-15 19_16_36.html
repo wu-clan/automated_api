@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title> 发布会系统接口自动化测试报告 </title>
+    <title> 重新整理框架 </title>
     <meta name="generator" content="HTMLTestRunner 1.0.3" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://lib.baomitu.com/jquery/3.5.1/jquery.min.js"></script>
@@ -42,7 +42,7 @@
     ::-webkit-scrollbar-thumb {
         border-radius: 10px;
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-        background-color: #6c757d;
+        background-color: #98a6ad;
     }
 
     .heading {
@@ -112,42 +112,42 @@
 
     #total_row {
         font-weight: bold;
-        background-color: #dee2e6;
+        background-color: #939393;
     }
 
     .passClass {
-        background-color: #d6e9c6;
+        background-color: #10c469;
     }
 
     .failClass {
-        background-color: #ffd966;
+        background-color: #fdd57f;
     }
 
     .errorClass {
-        background-color: #ebccd1;
+        background-color: #ff8181;
     }
 
 	.skipClass {
-		background-color: #a180da;
+		background-color: #98a6ad;
 	}
 	
     .passCase {
-        color: #28a745;
+        color: #10c469;
         font-weight: bold;
     }
 	
     .failCase {
-        color: #ffd966;
+        color: #fdd57f;
         font-weight: bold;
     }
 
     .errorCase {
-        color: #c00;
+        color: #ff8181;
         font-weight: bold;
     }
 	
 	.skipCase {
-		color: #a180da;
+		color: #98a6ad;
 		font-weight: bold;
 	}
 	
@@ -171,26 +171,26 @@
 
     .error-color {
         color: #fff;
-        background-color: #f44455;
-        border-color: #f44455;
+        background-color: #ff5b5b;
+        border-color: #ff5b5b;
     }
 
     .pass-color {
         color: #fff;
-        background-color: #5fc27e;
-        border-color: #5fc27e;
+        background-color: #10c469;
+        border-color: #10c469;
     }
 
     .fail-color {
         color: #fff;
-        background-color: #fcc100;
-        border-color: #fcc100;
+        background-color: #f9c851;
+        border-color: #f9c851;
     }
 
     .skip-color {
         color: #fff;
-        background-color: #6c757d;
-        border-color: #6c757d;
+        background-color: #98a6ad;
+        border-color: #98a6ad;
     }
 
     /* -- screenshots ---------------------------------------------------------------------- */
@@ -450,14 +450,14 @@
     <h1 style="margin-bottom: 0px; color: azure;">CLOUSOFT</h1>
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav ml-auto">
-            <h3 style="float: right; color: azure;"> 发布会系统接口自动化测试报告</h3>
+            <h3 style="float: right; color: azure;"> 重新整理框架</h3>
         </ul>
     </div>
 </nav>
 
 <div id="parentContainer" class="container-fluid mm-active" style="padding-left: 35px;padding-right: 35px;">
     <div style="height: 260px; margin-top: 20px;">
-        
+
         <div class="row" style="margin-left: 0px; margin-right: 0px;">
             <div class="col-12 col-lg-5 col-xl-3 d-flex" style="float:left">
                 <div class='card flex-fill'>
@@ -465,30 +465,30 @@
                         <h4 class="header-title">Overview</h4>
                         <table class="table my-0">
                             <tbody>
-                                <tr>
-                                    <td>Tester:</td>
-                                    <td class="text-right">Jason</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td> Start Time</td>
-                                    <td class="text-right">2021-07-21 20:27:09</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td> Duration</td>
-                                    <td class="text-right">0:00:02.054876</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td> Status</td>
-                                    <td class="text-right">Errors:1</td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>Description:</td>
-                                    <td class="text-right">环境：windows 7 浏览器：chrome</td>
-                                </tr>
+                            <tr>
+                                <td>Tester</td>
+                                <td class="text-right">123</td>
+                            </tr>
+                            
+                            <tr>
+                                <td> Start Time</td>
+                                <td class="text-right">2021-12-15 19:16:36</td>
+                            </tr>
+                            
+                            <tr>
+                                <td> Duration</td>
+                                <td class="text-right">0:00:03.353044</td>
+                            </tr>
+                            
+                            <tr>
+                                <td> Status</td>
+                                <td class="text-right">Passed:3</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Description:</td>
+                                <td class="text-right">接口自动化测试</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -498,9 +498,10 @@
             <div class="col-xl-3 col-lg-6 order-lg-1">
                 <div class="card-body">
                     <div class="testChars" style="width: 230px; height: 200px;">
-                        <canvas id="myChart" width="250" height="250" style="margin-left: 99px; margin-top: 20px;"></canvas>
+                        <canvas id="myChart" width="250" height="250"
+                                style="margin-left: 99px; margin-top: 20px;"></canvas>
                     </div>
-                </div> 
+                </div>
             </div>
 
         </div>
@@ -512,7 +513,7 @@
         <a href='javascript:showCase(1, 1)' class="btn btn-success btn-sm">Pass</a>
         <a href='javascript:showCase(2, 1)' class="btn btn-warning btn-sm">Failed</a>
         <a href='javascript:showCase(3, 1)' class="btn btn-danger btn-sm">Error</a>
-        <a href='javascript:showCase(4, 1)' class="btn btn-secondary btn-sm">Skip</a>
+        <a href='javascript:showCase(4, 1)' class="btn btn-sm" style="background-color: #98a6ad; color: white">Skip</a>
         <a href='javascript:showCase(5, 1)' class="btn btn-info btn-sm">All</a>
     </p>
 </div>
@@ -537,50 +538,103 @@
                     </tr>
                 </thead>
                 
-<tr class='errorClass'>
-    <td>test.testAPI.Demo_API</td>
+<tr class='passClass'>
+    <td>testAPI.Demo_API</td>
     <td>发布会系统</td>
     <td></td>
-    <td>1</td>
+    <td>3</td>
+    <td>3</td>
     <td>0</td>
     <td>0</td>
-    <td>1</td>
     <td>0</td>
-    <td><a href="javascript:showClassDetail('c1.1',1)">Detail</a></td>
+    <td><a href="javascript:showClassDetail('c1.1',3)">Detail</a></td>
     <td>&nbsp;</td>
 </tr>
 
-<tr id='et1.1.1' class='none'>
-    <td class='errorCase'>
-        <div class='testcase'>test_api_1</div>
+<tr id='pt1.1.1' class='hiddenRow'>
+    <td class='passCase'>
+        <div class='testcase'>test_api1_1</div>
     </td>
     <td style="color: #495057">
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>2.05 s</div>
+        <div>2.66 s</div>
     </td>
     <td colspan='5' align='center'>
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_et1.1.1')" >
-        error</a>
-    <div id='div_et1.1.1' class="popup_window">
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.1')" >
+        pass</a>
+    <div id='div_pt1.1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_et1.1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
-        et1.1.1: ******* 正在执行用例 -&gt;event_query_001 *********
-请求方式: get，请求URL: http://127.0.0.1:8000/api/get_event_list/
-请求参数: {"eid":1}
-post请求body类型为： ,body内容为：
-HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/get_event_list/?eid=1 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001B62488B820&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
-Traceback (most recent call last):
-  File "C:\ProgramData\Anaconda3\lib\site-packages\ddt.py", line 182, in wrapper
-    return func(self, *args, **kwargs)
-  File "C:\gitproject\automation_interface\DemoAPI\testcase\test\testAPI.py", line 42, in test_api
-    self.result = re.json()
-AttributeError: 'NoneType' object has no attribute 'json'
+        pt1.1.1: D:\Anaconda3\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.2' class='hiddenRow'>
+    <td class='passCase'>
+        <div class='testcase'>test_api1_2</div>
+    </td>
+    <td style="color: #495057">
+        <div></div>
+    </td>
+    <td style="color: #495057">
+        <div>0.35 s</div>
+    </td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.2')" >
+        pass</a>
+    <div id='div_pt1.1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        pt1.1.2: D:\Anaconda3\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.3' class='hiddenRow'>
+    <td class='passCase'>
+        <div class='testcase'>test_api1_3</div>
+    </td>
+    <td style="color: #495057">
+        <div></div>
+    </td>
+    <td style="color: #495057">
+        <div>0.35 s</div>
+    </td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.3')" >
+        pass</a>
+    <div id='div_pt1.1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        pt1.1.3: D:\Anaconda3\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(
 
         </pre>
     </div>
@@ -594,11 +648,11 @@ AttributeError: 'NoneType' object has no attribute 'json'
                     <td>Total</td>
                     <td> </td>
                     <td> </td>
-                    <td>1</td>
-                    <td class="text text-success">0</td>
+                    <td>3</td>
+                    <td class="text text-success">3</td>
                     <td class="text text-warning">0</td>
-                    <td class="text text-danger">1</td>
-					<td class="text" style="color: #a180da;">0</td>
+                    <td class="text text-danger">0</td>
+					<td class="text" style="color: rgb(207 207 207);">0</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
@@ -619,7 +673,7 @@ AttributeError: 'NoneType' object has no attribute 'json'
         ],
         datasets: [
             {
-                data: [0, 0, 1, 0],
+                data: [3, 0, 0, 0],
                 backgroundColor: [
                     "#10c469",
                     "#f9c851",
@@ -650,7 +704,7 @@ AttributeError: 'NoneType' object has no attribute 'json'
     <p style="text-align:center">
 	2021 © 
 	<a href="https://gitee.com/wu_cl">xiaowu</a>&nbsp;|&nbsp;
-    <a href="https://github.com/SeldomQA/HTMLTestRunner">HTMLTestRunner</a>
+    <a href="https://gitee.com/wu_cl/HtmlTestRunner">HTMLTestRunner</a>
     </p>
 </footer>
 
