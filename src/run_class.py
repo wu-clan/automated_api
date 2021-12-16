@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # from 引入类，在这里（）内直接填入即可
     suite_tc.test_class(Demo_API)
 
-    # 1.不输出到测试报告
+    # 1.不输出到HTML测试报告
     runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite_tc.suit)
 

@@ -1,23 +1,24 @@
-model: 查询QQ
-  ID: event_query_001
+-
+  model: 查询QQ
+  ID: event_query_004
   UseCase: qq信息查询
   method: get
-  url: https://api.muxiaoguo.cn/api/QqInfo/
-  params: {"qq": "2186656812"}
+  url: https://api.muxiaoguo.cn/api/QqInfo
+  params: '{"qq": "2186656812"}'
   headers:
   body:
-  type: data # data / json / Any
+  type: # data / json / Any
   status_code: 200
   msg: success
   result:
   tester:
----
-model: 查询头像
-  ID: event_query_002
+-
+  model: 查询头像
+  ID: event_query_005
   UseCase: 获取pc头像
   method: post
-  url: http://127.0.0.1:8000/api/get_event_list/
-  params: {"method": "pc"}
+  url: https://api.muxiaoguo.cn/api/sjtx
+  params: '{"method": "pc"}'
   headers:
   body:
   type:
@@ -25,12 +26,12 @@ model: 查询头像
   msg: success
   result:
   tester:
----
-model: 查询语录
-  ID: event_query_003
+-
+  model: 查询语录
+  ID: event_query_006
   UseCase: 舔🐕语录
   method: get
-  url: http://127.0.0.1:8000/api/get_event_list/
+  url: https://api.muxiaoguo.cn/api/tiangourj
   params:
   headers:
   body:
@@ -39,4 +40,3 @@ model: 查询语录
   msg: success
   result:
   tester:
----

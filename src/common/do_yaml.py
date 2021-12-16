@@ -20,8 +20,6 @@ class DoYaml:
         _filename = os.path.join(YAML_FILE, filename)
         try:
             with open(_filename, encoding='utf-8') as f:
-                if '---' in f.read():
-                    return yaml.load_all(f.read(), Loader=yaml.FullLoader)
                 return yaml.load(f.read(), Loader=yaml.FullLoader)
         except Exception as e:
             log.error(f'文件 {filename} 不存在\n{e}')
