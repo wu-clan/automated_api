@@ -25,5 +25,5 @@ def html_report():
                                 verbosity=2,
                                 tester=TESTER,
                                 description=DESCRIPTION)
-        log.success('html测试报告生成成功')
+        log.success('正在使用-html测试报告方式-进行测试')
         return runner, fp, filename

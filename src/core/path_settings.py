@@ -33,23 +33,26 @@ EMAIL_USER = read_config.get_conf_value(config, 'email', 'user')
 EMAIL_PASSWORD = read_config.get_conf_value(config, 'email', 'password')
 EMAIL_PORT = read_config.get_conf_value(config, 'email', 'port')
 
-# 测试用例参数模板文件
+# 测试用例参数 yaml 文件
 YAML_FILE = os.path.join(BASE_DIR, 'data')
 
+# 测试用例参数 xlsx 文件
+XLSX_FILE = os.path.join(BASE_DIR, 'data')
+
 # 测试用例参数模板文件
-TEMPLATE_FILE = os.path.join(BASE_DIR, 'data', 'DemoAPITestCase.xlsx')
-
-# excel测试报告文件
-EXCEL_RESULT = os.path.join(BASE_DIR, 'report', 'excel_report', 'APITestResult.xlsx')
-
-# HTML测试报告路径
-HTML_REPORT = os.path.join(BASE_DIR, "report", 'html_report')
-
-# 测试用例文件夹名
-FILE_NAME = read_config.get_conf_value(config, 'project', 'project')
+TEMPLATE_XLSX_FILE = os.path.join(BASE_DIR, 'data', 'DemoAPITestCase.xlsx')
 
 # 测试用例路径
-TEST_CASES = os.path.join(BASE_DIR, 'testcase', FILE_NAME)
+TEST_CASES = os.path.join(BASE_DIR, 'testcase', read_config.get_conf_value(config, 'project', 'project'))
 
 # 日志路径
 LOG_PATH = os.path.join(BASE_DIR, 'log')
+
+# EXCEL测试报告
+EXCEL_RESULT = os.path.join(BASE_DIR, 'report', 'excel_report', 'APITestResult.xlsx')
+
+# HTML测试报告
+HTML_REPORT = os.path.join(BASE_DIR, 'report', 'html_report')
+
+# YAML测试报告
+YAML_REPORT = os.path.join(BASE_DIR, 'report', 'yaml_report')

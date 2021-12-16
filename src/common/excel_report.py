@@ -10,7 +10,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import Font, Alignment
 from openpyxl.styles.colors import Color, COLOR_INDEX
 
-from src.core.path_settings import EXCEL_RESULT, TEMPLATE_FILE, TESTER
+from src.core.path_settings import EXCEL_RESULT, TEMPLATE_XLSX_FILE, TESTER
 
 
 class WriteExcel:
@@ -18,7 +18,7 @@ class WriteExcel:
 
 	def __init__(self):
 		if not os.path.exists(EXCEL_RESULT):
-			shutil.copyfile(TEMPLATE_FILE, EXCEL_RESULT)
+			shutil.copyfile(TEMPLATE_XLSX_FILE, EXCEL_RESULT)
 		self.wb = load_workbook(EXCEL_RESULT)
 		self.ws = self.wb.active
 

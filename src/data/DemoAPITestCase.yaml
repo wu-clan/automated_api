@@ -1,6 +1,6 @@
 -
   model: 查询QQ
-  ID: event_query_004
+  ID: event_query_001
   UseCase: qq信息查询
   method: get
   url: https://api.muxiaoguo.cn/api/QqInfo
@@ -14,7 +14,7 @@
   tester:
 -
   model: 查询头像
-  ID: event_query_005
+  ID: event_query_002
   UseCase: 获取pc头像
   method: post
   url: https://api.muxiaoguo.cn/api/sjtx
@@ -28,7 +28,7 @@
   tester:
 -
   model: 查询语录
-  ID: event_query_006
+  ID: event_query_003
   UseCase: 舔🐕语录
   method: get
   url: https://api.muxiaoguo.cn/api/tiangourj

@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
+import os
 
 import xlrd
 
 from src.common.log import log
+from src.core.path_settings import XLSX_FILE
 
 '''
 xlrd 最新版不再支持 xlsx 文件，只支持 xls,如果使用xlrd, 则需要使用旧版本 1.2.0
@@ -23,7 +25,8 @@ class ReadExcel:
 		:param fileName: 文件名
 		:param SheetName: 文件标签页
 		"""
-		self.data = xlrd.open_workbook(fileName)
+		file = os.path.join(XLSX_FILE, fileName)
+		self.data = xlrd.open_workbook(file)
 		self.table = self.data.sheet_by_name(SheetName)
 		# 获取总行数、总列数
 		self.rows = self.table.nrows

@@ -1,0 +1,130 @@
+'-':
+  data:
+    request:
+      ID: event_query_001
+      UseCase: qq信息查询
+      body: null
+      headers: null
+      method: get
+      model: 查询QQ
+      msg: success
+      params: '{"qq": "2186656812"}'
+      result: null
+      status_code: 200
+      tester: null
+      type: null
+      url: https://api.muxiaoguo.cn/api/QqInfo
+    response:
+      code: '200'
+      data:
+        imgurl: http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100
+        mail: 2186656812@qq.com
+        name: ゲシジズボ
+      msg: success
+'-':
+  data:
+    request:
+      ID: event_query_002
+      UseCase: 获取pc头像
+      body: null
+      headers: null
+      method: post
+      model: 查询头像
+      msg: success
+      params: '{"method": "pc"}'
+      result: null
+      status_code: 200
+      tester: null
+      type: null
+      url: https://api.muxiaoguo.cn/api/sjtx
+    response:
+      code: '200'
+      data:
+        imgurl: https://tva2.sinaimg.cn/large/9bd9b167gy1g1p9biipycj20b40b4mxq.jpg
+      msg: success
+'-':
+  data:
+    request:
+      ID: event_query_003
+      UseCase: 舔🐕语录
+      body: null
+      headers: null
+      method: get
+      model: 查询语录
+      msg: success
+      params: null
+      result: null
+      status_code: 200
+      tester: null
+      type: null
+      url: https://api.muxiaoguo.cn/api/tiangourj
+    response:
+      code: '200'
+      data:
+        comment: 今天很开心，你愿意和我连麦了。我想，我在麦里听到的男声肯定是错觉罢了，你只是刚跑完步才会这么喘的，突然摔了一跤才会大声嗯啊的，身体不舒服才会说要死了，肯定不是为了满足某个男生的某种需求。嗯，就算这些都是真的，我也依然爱你，因为，我很开心，今天，你愿意和我连麦了。
+      msg: success
+'-':
+  data:
+    request:
+      ID: event_query_001
+      UseCase: qq信息查询
+      body: null
+      headers: null
+      method: get
+      model: 查询QQ
+      msg: success
+      params: '{"qq": "2186656812"}'
+      result: null
+      status_code: 200
+      tester: null
+      type: null
+      url: https://api.muxiaoguo.cn/api/QqInfo
+    response:
+      code: '200'
+      data:
+        imgurl: http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100
+        mail: 2186656812@qq.com
+        name: ゲシジズボ
+      msg: success
+'-':
+  data:
+    request:
+      ID: event_query_002
+      UseCase: 获取pc头像
+      body: null
+      headers: null
+      method: post
+      model: 查询头像
+      msg: success
+      params: '{"method": "pc"}'
+      result: null
+      status_code: 200
+      tester: null
+      type: null
+      url: https://api.muxiaoguo.cn/api/sjtx
+    response:
+      code: '200'
+      data:
+        imgurl: https://tva1.sinaimg.cn/large/9bd9b167ly1fzjvsbz53yj20b40b4wf1.jpg
+      msg: success
+'-':
+  data:
+    request:
+      ID: event_query_003
+      UseCase: 舔🐕语录
+      body: null
+      headers: null
+      method: get
+      model: 查询语录
+      msg: success
+      params: null
+      result: null
+      status_code: 200
+      tester: null
+      type: null
+      url: https://api.muxiaoguo.cn/api/tiangourj
+    response:
+      code: '200'
+      data:
+        comment: 我给你打了几通电话，你终于接了。听到了你发出啊啊啊啊的声音，你说你肚子痛，我想你一定是很难受吧。电话还有个男的对你说“来换个姿势”，一定是在做理疗了。期待你早日康复，我好担心。
+      msg: success
