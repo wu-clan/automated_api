@@ -7,6 +7,7 @@ import ddt
 
 from src.common.excel_report import WriteExcel
 from src.common.log import log
+from src.common.myunit import MyUnit
 from src.common.read_excel import ReadExcel
 from src.common.read_yaml import ReadYaml
 from src.common.send_requests import SendRequests
@@ -19,7 +20,7 @@ yamlFile = os.path.join(YAML_FILE, 'DemoAPITestCase.yaml')
 
 
 @ddt.ddt
-class Demo_API(unittest.TestCase):
+class Demo_API(MyUnit):
 	"""
 	三种方式编写用例参数
 	1，excel 获取数据

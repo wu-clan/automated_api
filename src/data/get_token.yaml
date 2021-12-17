@@ -1,0 +1,6 @@
+login:
+  url: http://127.0.0.1:8000/v1/login
+  data: {'username': '1', 'password': '1'}
+  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+  # token的变量名
+  token_name: access_token

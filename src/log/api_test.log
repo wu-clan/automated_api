@@ -1,61 +1,77 @@
-2021-12-16 18:48:58.003 | SUCCESS  | src.common.html_report:html_report:28 - 正在使用-html测试报告方式-进行测试
-2021-12-16 18:48:58.004 | INFO     | testAPI:test_api1:33 - ---------- 正在执行用例 -> event_query_001 ----------
-2021-12-16 18:48:58.004 | INFO     | testAPI:test_api1:34 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/QqInfo
-2021-12-16 18:48:58.004 | INFO     | testAPI:test_api1:35 - 请求参数: {"qq": "2186656812"}
-2021-12-16 18:48:58.004 | INFO     | testAPI:test_api1:36 - 请求body类型为： ,body内容为：
-2021-12-16 18:48:58.805 | INFO     | testAPI:test_api1:43 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100","name":"ゲシジズボ","mail":"2186656812@qq.com"}}
-2021-12-16 18:48:58.805 | SUCCESS  | testAPI:test_api1:49 - 用例测试结果:  event_query_001 ----> PASS
-2021-12-16 18:48:58.829 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
-2021-12-16 18:48:58.830 | INFO     | testAPI:test_api1:33 - ---------- 正在执行用例 -> event_query_002 ----------
-2021-12-16 18:48:58.830 | INFO     | testAPI:test_api1:34 - 请求方式: post，请求URL: https://api.muxiaoguo.cn/api/sjtx
-2021-12-16 18:48:58.830 | INFO     | testAPI:test_api1:35 - 请求参数: {"method": "pc"}
-2021-12-16 18:48:58.831 | INFO     | testAPI:test_api1:36 - 请求body类型为： ,body内容为：
-2021-12-16 18:48:59.159 | INFO     | testAPI:test_api1:43 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"https://tva3.sinaimg.cn/large/9bd9b167ly1fzjwj6j407j20b40b4dga.jpg"}}
-2021-12-16 18:48:59.160 | SUCCESS  | testAPI:test_api1:49 - 用例测试结果:  event_query_002 ----> PASS
-2021-12-16 18:48:59.179 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
-2021-12-16 18:48:59.180 | INFO     | testAPI:test_api1:33 - ---------- 正在执行用例 -> event_query_003 ----------
-2021-12-16 18:48:59.181 | INFO     | testAPI:test_api1:34 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/tiangourj
-2021-12-16 18:48:59.181 | INFO     | testAPI:test_api1:35 - 请求参数: 
-2021-12-16 18:48:59.181 | INFO     | testAPI:test_api1:36 - 请求body类型为： ,body内容为：
-2021-12-16 18:48:59.502 | INFO     | testAPI:test_api1:43 - 页面返回信息：{"code":"200","msg":"success","data":{"comment":"我存了半年的工资，给你买了一只lv，你对我说了一句你真好，我好开心。这是你第一次这么认可我，以前你都只对我说滚。今天晚上逛闲鱼，看到你把我送你的lv发布上去了。我想，你一定是在考验我，于是我用借呗里的钱把它买了下来，再次送给你，给你一个惊喜，我爱你。"}}
-2021-12-16 18:48:59.502 | SUCCESS  | testAPI:test_api1:49 - 用例测试结果:  event_query_003 ----> PASS
-2021-12-16 18:48:59.522 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
-2021-12-16 18:48:59.523 | INFO     | testAPI:test_api2:60 - ---------- 正在执行用例 -> event_query_001 ----------
-2021-12-16 18:48:59.523 | INFO     | testAPI:test_api2:61 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/QqInfo
-2021-12-16 18:48:59.523 | INFO     | testAPI:test_api2:62 - 请求参数: {"qq": "2186656812"}
-2021-12-16 18:48:59.523 | INFO     | testAPI:test_api2:63 - 请求body类型为：None ,body内容为：None
-2021-12-16 18:49:00.001 | INFO     | testAPI:test_api2:70 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100","name":"ゲシジズボ","mail":"2186656812@qq.com"}}
-2021-12-16 18:49:00.001 | SUCCESS  | testAPI:test_api2:76 - 用例测试结果:  event_query_001 ----> PASS
-2021-12-16 18:49:00.004 | INFO     | testAPI:test_api2:60 - ---------- 正在执行用例 -> event_query_002 ----------
-2021-12-16 18:49:00.004 | INFO     | testAPI:test_api2:61 - 请求方式: post，请求URL: https://api.muxiaoguo.cn/api/sjtx
-2021-12-16 18:49:00.004 | INFO     | testAPI:test_api2:62 - 请求参数: {"method": "pc"}
-2021-12-16 18:49:00.004 | INFO     | testAPI:test_api2:63 - 请求body类型为：None ,body内容为：None
-2021-12-16 18:49:00.323 | INFO     | testAPI:test_api2:70 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"https://tva2.sinaimg.cn/large/9bd9b167gy1g1p9biipycj20b40b4mxq.jpg"}}
-2021-12-16 18:49:00.324 | SUCCESS  | testAPI:test_api2:76 - 用例测试结果:  event_query_002 ----> PASS
-2021-12-16 18:49:00.327 | INFO     | testAPI:test_api2:60 - ---------- 正在执行用例 -> event_query_003 ----------
-2021-12-16 18:49:00.327 | INFO     | testAPI:test_api2:61 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/tiangourj
-2021-12-16 18:49:00.327 | INFO     | testAPI:test_api2:62 - 请求参数: None
-2021-12-16 18:49:00.327 | INFO     | testAPI:test_api2:63 - 请求body类型为：None ,body内容为：None
-2021-12-16 18:49:00.652 | INFO     | testAPI:test_api2:70 - 页面返回信息：{"code":"200","msg":"success","data":{"comment":"今天很开心，你愿意和我连麦了。我想，我在麦里听到的男声肯定是错觉罢了，你只是刚跑完步才会这么喘的，突然摔了一跤才会大声嗯啊的，身体不舒服才会说要死了，肯定不是为了满足某个男生的某种需求。嗯，就算这些都是真的，我也依然爱你，因为，我很开心，今天，你愿意和我连麦了。"}}
-2021-12-16 18:49:00.652 | SUCCESS  | testAPI:test_api2:76 - 用例测试结果:  event_query_003 ----> PASS
-2021-12-16 18:49:00.655 | INFO     | testAPI:test_api3:87 - ---------- 正在执行用例 -> event_query_001 ----------
-2021-12-16 18:49:00.655 | INFO     | testAPI:test_api3:88 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/QqInfo
-2021-12-16 18:49:00.655 | INFO     | testAPI:test_api3:89 - 请求参数: {"qq": "2186656812"}
-2021-12-16 18:49:00.655 | INFO     | testAPI:test_api3:90 - 请求body类型为：None ,body内容为：None
-2021-12-16 18:49:01.321 | INFO     | testAPI:test_api3:97 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100","name":"ゲシジズボ","mail":"2186656812@qq.com"}}
-2021-12-16 18:49:01.322 | SUCCESS  | testAPI:test_api3:103 - 用例测试结果:  event_query_001 ----> PASS
-2021-12-16 18:49:01.325 | INFO     | testAPI:test_api3:87 - ---------- 正在执行用例 -> event_query_002 ----------
-2021-12-16 18:49:01.325 | INFO     | testAPI:test_api3:88 - 请求方式: post，请求URL: https://api.muxiaoguo.cn/api/sjtx
-2021-12-16 18:49:01.325 | INFO     | testAPI:test_api3:89 - 请求参数: {"method": "pc"}
-2021-12-16 18:49:01.325 | INFO     | testAPI:test_api3:90 - 请求body类型为：None ,body内容为：None
-2021-12-16 18:49:01.718 | INFO     | testAPI:test_api3:97 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"https://tva1.sinaimg.cn/large/9bd9b167ly1fzjvsbz53yj20b40b4wf1.jpg"}}
-2021-12-16 18:49:01.718 | SUCCESS  | testAPI:test_api3:103 - 用例测试结果:  event_query_002 ----> PASS
-2021-12-16 18:49:01.721 | INFO     | testAPI:test_api3:87 - ---------- 正在执行用例 -> event_query_003 ----------
-2021-12-16 18:49:01.721 | INFO     | testAPI:test_api3:88 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/tiangourj
-2021-12-16 18:49:01.721 | INFO     | testAPI:test_api3:89 - 请求参数: None
-2021-12-16 18:49:01.721 | INFO     | testAPI:test_api3:90 - 请求body类型为：None ,body内容为：None
-2021-12-16 18:49:02.051 | INFO     | testAPI:test_api3:97 - 页面返回信息：{"code":"200","msg":"success","data":{"comment":"我给你打了几通电话，你终于接了。听到了你发出啊啊啊啊的声音，你说你肚子痛，我想你一定是很难受吧。电话还有个男的对你说“来换个姿势”，一定是在做理疗了。期待你早日康复，我好担心。"}}
-2021-12-16 18:49:02.052 | SUCCESS  | testAPI:test_api3:103 - 用例测试结果:  event_query_003 ----> PASS
-2021-12-16 18:49:02.066 | INFO     | src.utils.sendmail:_get_report:22 - 获取测试报告: 重新整理框架_2021-12-16 18_48_58.html
-2021-12-16 18:49:19.536 | ERROR    | src.utils.sendmail:send:55 - 测试报告邮件发送失败
-[WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2021-12-17 11:53:06.336 | INFO     | src.common.myunit:setUpClass:24 - 获取全局 token 成功: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjIwMTI5NjExODYsInN1YiI6IjEifQ.lnOgEVZ7Cc0qgLSmCEifjwsLUwP9QgIKlNL6JNEPWoc
+2021-12-17 11:53:06.336 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:06.337 | INFO     | src.testcase.test.testAPI:test_api1:34 - ---------- 正在执行用例 -> event_query_001 ----------
+2021-12-17 11:53:06.337 | INFO     | src.testcase.test.testAPI:test_api1:35 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/QqInfo
+2021-12-17 11:53:06.337 | INFO     | src.testcase.test.testAPI:test_api1:36 - 请求参数: {"qq": "2186656812"}
+2021-12-17 11:53:06.337 | INFO     | src.testcase.test.testAPI:test_api1:37 - 请求body类型为： ,body内容为：
+2021-12-17 11:53:07.117 | INFO     | src.testcase.test.testAPI:test_api1:44 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100","name":"ゲシジズボ","mail":"2186656812@qq.com"}}
+2021-12-17 11:53:07.117 | SUCCESS  | src.testcase.test.testAPI:test_api1:50 - 用例测试结果:  event_query_001 ----> PASS
+2021-12-17 11:53:07.139 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
+2021-12-17 11:53:07.140 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:07.140 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:07.140 | INFO     | src.testcase.test.testAPI:test_api1:34 - ---------- 正在执行用例 -> event_query_002 ----------
+2021-12-17 11:53:07.141 | INFO     | src.testcase.test.testAPI:test_api1:35 - 请求方式: post，请求URL: https://api.muxiaoguo.cn/api/sjtx
+2021-12-17 11:53:07.141 | INFO     | src.testcase.test.testAPI:test_api1:36 - 请求参数: {"method": "pc"}
+2021-12-17 11:53:07.141 | INFO     | src.testcase.test.testAPI:test_api1:37 - 请求body类型为： ,body内容为：
+2021-12-17 11:53:07.479 | INFO     | src.testcase.test.testAPI:test_api1:44 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"https://tva1.sinaimg.cn/large/9bd9b167ly1fzjwioxg8dj20b40b4aaa.jpg"}}
+2021-12-17 11:53:07.479 | SUCCESS  | src.testcase.test.testAPI:test_api1:50 - 用例测试结果:  event_query_002 ----> PASS
+2021-12-17 11:53:07.498 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
+2021-12-17 11:53:07.499 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:07.500 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:07.500 | INFO     | src.testcase.test.testAPI:test_api1:34 - ---------- 正在执行用例 -> event_query_003 ----------
+2021-12-17 11:53:07.500 | INFO     | src.testcase.test.testAPI:test_api1:35 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/tiangourj
+2021-12-17 11:53:07.500 | INFO     | src.testcase.test.testAPI:test_api1:36 - 请求参数: 
+2021-12-17 11:53:07.500 | INFO     | src.testcase.test.testAPI:test_api1:37 - 请求body类型为： ,body内容为：
+2021-12-17 11:53:07.834 | INFO     | src.testcase.test.testAPI:test_api1:44 - 页面返回信息：{"code":"200","msg":"success","data":{"comment":"不想再当舔狗了，有些人心是J开头的不可描述部位做的，越舔越硬。"}}
+2021-12-17 11:53:07.834 | SUCCESS  | src.testcase.test.testAPI:test_api1:50 - 用例测试结果:  event_query_003 ----> PASS
+2021-12-17 11:53:07.853 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
+2021-12-17 11:53:07.854 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:07.854 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:07.855 | INFO     | src.testcase.test.testAPI:test_api2:61 - ---------- 正在执行用例 -> event_query_001 ----------
+2021-12-17 11:53:07.855 | INFO     | src.testcase.test.testAPI:test_api2:62 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/QqInfo
+2021-12-17 11:53:07.855 | INFO     | src.testcase.test.testAPI:test_api2:63 - 请求参数: {"qq": "2186656812"}
+2021-12-17 11:53:07.855 | INFO     | src.testcase.test.testAPI:test_api2:64 - 请求body类型为：None ,body内容为：None
+2021-12-17 11:53:09.520 | INFO     | src.testcase.test.testAPI:test_api2:71 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100","name":"ゲシジズボ","mail":"2186656812@qq.com"}}
+2021-12-17 11:53:09.520 | SUCCESS  | src.testcase.test.testAPI:test_api2:77 - 用例测试结果:  event_query_001 ----> PASS
+2021-12-17 11:53:09.523 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:09.523 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:09.523 | INFO     | src.testcase.test.testAPI:test_api2:61 - ---------- 正在执行用例 -> event_query_002 ----------
+2021-12-17 11:53:09.523 | INFO     | src.testcase.test.testAPI:test_api2:62 - 请求方式: post，请求URL: https://api.muxiaoguo.cn/api/sjtx
+2021-12-17 11:53:09.524 | INFO     | src.testcase.test.testAPI:test_api2:63 - 请求参数: {"method": "pc"}
+2021-12-17 11:53:09.524 | INFO     | src.testcase.test.testAPI:test_api2:64 - 请求body类型为：None ,body内容为：None
+2021-12-17 11:53:09.859 | INFO     | src.testcase.test.testAPI:test_api2:71 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"https://tva3.sinaimg.cn/large/9bd9b167ly1g1p9vvhu3mj20b40b4aan.jpg"}}
+2021-12-17 11:53:09.860 | SUCCESS  | src.testcase.test.testAPI:test_api2:77 - 用例测试结果:  event_query_002 ----> PASS
+2021-12-17 11:53:09.863 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:09.863 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:09.863 | INFO     | src.testcase.test.testAPI:test_api2:61 - ---------- 正在执行用例 -> event_query_003 ----------
+2021-12-17 11:53:09.863 | INFO     | src.testcase.test.testAPI:test_api2:62 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/tiangourj
+2021-12-17 11:53:09.863 | INFO     | src.testcase.test.testAPI:test_api2:63 - 请求参数: None
+2021-12-17 11:53:09.864 | INFO     | src.testcase.test.testAPI:test_api2:64 - 请求body类型为：None ,body内容为：None
+2021-12-17 11:53:10.280 | INFO     | src.testcase.test.testAPI:test_api2:71 - 页面返回信息：{"code":"200","msg":"success","data":{"comment":"你很久没回我的消息，在我孜孜不倦的骚扰之下你终于舍得回我了，你说“滚”这其中一定有什么含义，我想了很久，滚是三点水，这代表你对我的思念也如滚滚流水一样汹涌，我感动哭了，不知道你现在在干嘛！我很想你。 ?"}}
+2021-12-17 11:53:10.281 | SUCCESS  | src.testcase.test.testAPI:test_api2:77 - 用例测试结果:  event_query_003 ----> PASS
+2021-12-17 11:53:10.283 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:10.284 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:10.284 | INFO     | src.testcase.test.testAPI:test_api3:88 - ---------- 正在执行用例 -> event_query_001 ----------
+2021-12-17 11:53:10.284 | INFO     | src.testcase.test.testAPI:test_api3:89 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/QqInfo
+2021-12-17 11:53:10.284 | INFO     | src.testcase.test.testAPI:test_api3:90 - 请求参数: {"qq": "2186656812"}
+2021-12-17 11:53:10.284 | INFO     | src.testcase.test.testAPI:test_api3:91 - 请求body类型为：None ,body内容为：None
+2021-12-17 11:53:10.868 | INFO     | src.testcase.test.testAPI:test_api3:98 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"http://q1.qlogo.cn/g?b=qq&nk=2186656812&s=100","name":"ゲシジズボ","mail":"2186656812@qq.com"}}
+2021-12-17 11:53:10.868 | SUCCESS  | src.testcase.test.testAPI:test_api3:104 - 用例测试结果:  event_query_001 ----> PASS
+2021-12-17 11:53:10.871 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:10.871 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:10.871 | INFO     | src.testcase.test.testAPI:test_api3:88 - ---------- 正在执行用例 -> event_query_002 ----------
+2021-12-17 11:53:10.872 | INFO     | src.testcase.test.testAPI:test_api3:89 - 请求方式: post，请求URL: https://api.muxiaoguo.cn/api/sjtx
+2021-12-17 11:53:10.872 | INFO     | src.testcase.test.testAPI:test_api3:90 - 请求参数: {"method": "pc"}
+2021-12-17 11:53:10.872 | INFO     | src.testcase.test.testAPI:test_api3:91 - 请求body类型为：None ,body内容为：None
+2021-12-17 11:53:11.209 | INFO     | src.testcase.test.testAPI:test_api3:98 - 页面返回信息：{"code":"200","msg":"success","data":{"imgurl":"https://tva3.sinaimg.cn/large/9bd9b167ly1fzjxybv5twj20b40b4aag.jpg"}}
+2021-12-17 11:53:11.209 | SUCCESS  | src.testcase.test.testAPI:test_api3:104 - 用例测试结果:  event_query_002 ----> PASS
+2021-12-17 11:53:11.212 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:11.212 | INFO     | src.common.myunit:setUp:27 - new test start
+2021-12-17 11:53:11.212 | INFO     | src.testcase.test.testAPI:test_api3:88 - ---------- 正在执行用例 -> event_query_003 ----------
+2021-12-17 11:53:11.212 | INFO     | src.testcase.test.testAPI:test_api3:89 - 请求方式: get，请求URL: https://api.muxiaoguo.cn/api/tiangourj
+2021-12-17 11:53:11.212 | INFO     | src.testcase.test.testAPI:test_api3:90 - 请求参数: None
+2021-12-17 11:53:11.213 | INFO     | src.testcase.test.testAPI:test_api3:91 - 请求body类型为：None ,body内容为：None
+2021-12-17 11:53:11.550 | INFO     | src.testcase.test.testAPI:test_api3:98 - 页面返回信息：{"code":"200","msg":"success","data":{"comment":"在我一如既往的每天跟她问早安的时候，她今天终于回我了 我激动地问她我是不是今天第一个跟她说话的人 她说不是，是她男朋友把她叫起来退房的"}}
+2021-12-17 11:53:11.550 | SUCCESS  | src.testcase.test.testAPI:test_api3:104 - 用例测试结果:  event_query_003 ----> PASS
+2021-12-17 11:53:11.553 | INFO     | src.common.myunit:tearDown:30 - this test end
+2021-12-17 11:53:11.553 | INFO     | src.common.myunit:tearDownClass:34 - 全部测试执行完毕
