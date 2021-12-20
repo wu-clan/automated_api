@@ -17,7 +17,10 @@ class MyUnit(unittest.TestCase):
         url = requestInfo['url']
         data = requestInfo['data']
         headers = requestInfo['headers']
-        response = requests.post(url=url, data=data, headers=headers,).json()
+        try:
+            response = requests.post(url=url, data=data, headers=headers,).json()
+        except Exception as e:
+            log.warning(f'获取 token 失败，如果你不需要 token 忽略即可\n{e}')
         # 全局变量token
         global token
         token = response[requestInfo['token_name']]
