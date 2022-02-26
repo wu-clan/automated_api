@@ -1,49 +1,39 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-
-from pymysql import connect
+import pymysql
 from pymysql.err import OperationalError
 
-from src.core.path_settings import DB_CHARSET, DB_DATABASE, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER
 from src.common.log import log
+from src.core.conf import settings
 
 
 class DB:
 
     def __init__(self):
         try:
-            self.conn = connect(host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASSWORD, database=DB_DATABASE,
-                                charset=DB_CHARSET)
+            self.conn = pymysql.connect(
+                host=settings.DB_HOST,
+                port=settings.DB_PORT,
+                user=settings.DB_USER,
+                password=settings.DB_PASSWORD,
+                database=settings.DB_DATABASE,
+                charset=settings.DB_CHARSET
+            )
         except OperationalError as e:
-            log.error('数据库连接失败\n', e)
+            log.error(f'数据库连接失败\n {e}')
         self.cursor = self.conn.cursor()
 
-    def insert(self, table_name, table_data):
+    def ect(self, sql):
         """
-        插入表数据
-        :param table_name: 表名
-        :param table_data: 表数据
+        数据库操作执行
         :return:
         """
-        for key in table_data:
-            table_data[key] = "'" + str(table_data[key]) + "'"
-        key = ','.join(table_data.keys())
-        value = ','.join(table_data.values())
-        real_sql = "INSERT INTO " + table_name + " (" + key + ") VALUES (" + value + ")"
-        self.cursor.execute(real_sql)
-        self.conn.commit()
-
-    def clear(self, table_name):
-        """
-        清除表数据
-        :param table_name: 表名
-        :return:
-        """
-        real_sql = "delete from " + table_name + ";"
-        # 取消表的外键约束
-        self.cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
-        self.cursor.execute(real_sql)
-        self.conn.commit()
+        try:
+            self.cursor.execute(sql)
+            self.conn.commit()
+        except Exception as e:
+            self.conn.rollback()
+            log.error(f'执行 {sql} 时发生错误\n {e}')
 
     def close(self):
         """
@@ -52,14 +42,3 @@ class DB:
         """
         self.conn.close()
 
-    def init_data(self, data):
-        """
-        初始化数据
-        :param data: 表数据
-        :return:
-        """
-        for table, data in data.items():
-            self.clear(table)
-            for d in data:
-                self.insert(table, d)
-        self.close()

@@ -10,7 +10,6 @@ from src.core.path_settings import YAML_REPORT
 
 
 class WriteYaml:
-
     curr_time = time.strftime('%Y-%m-%d %H_%M_%S')
 
     @staticmethod
@@ -31,5 +30,3 @@ class WriteYaml:
         except Exception as e:
             log.error(f'写入文件 "{_filename}" 错误\n{e}')
             raise e
-
-

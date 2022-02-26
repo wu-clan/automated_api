@@ -1,10 +1,10 @@
 -
-  model: 查询QQ
+  model: 腾讯域名拦截检测
   ID: event_query_001
-  UseCase: qq信息查询
+  UseCase: 腾讯域名拦截检测
   method: get
-  url: https://api.muxiaoguo.cn/api/QqInfo
-  params: '{"qq": "2186656812"}'
+  url: https://api.muxiaoguo.cn/api/ymljjc
+  params: '{"url": "https://api.muxiaoguo.cn"}'
   headers:
   body:
   type: # data / json / Any
@@ -13,12 +13,12 @@
   result:
   tester:
 -
-  model: 查询头像
+  model: 成语接龙
   ID: event_query_002
-  UseCase: 获取pc头像
+  UseCase: 成语接龙
   method: post
-  url: https://api.muxiaoguo.cn/api/sjtx
-  params: '{"method": "pc"}'
+  url: https://api.muxiaoguo.cn/api/chengyujielong
+  params: '{"word": "Start"}'
   headers:
   body:
   type:

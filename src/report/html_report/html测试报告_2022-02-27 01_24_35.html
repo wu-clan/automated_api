@@ -472,17 +472,17 @@
                             
                             <tr>
                                 <td> Start Time</td>
-                                <td class="text-right">2021-12-16 18:48:58</td>
+                                <td class="text-right">2022-02-27 01:24:35</td>
                             </tr>
                             
                             <tr>
                                 <td> Duration</td>
-                                <td class="text-right">0:00:04.052129</td>
+                                <td class="text-right">0:00:54.311394</td>
                             </tr>
                             
                             <tr>
                                 <td> Status</td>
-                                <td class="text-right">Passed:9</td>
+                                <td class="text-right">Passed:8  Errors:1</td>
                             </tr>
                             
                             <tr>
@@ -538,19 +538,19 @@
                     </tr>
                 </thead>
                 
-<tr class='passClass'>
+<tr class='errorClass'>
     <td>testAPI.Demo_API</td>
     <td>
 	三种方式编写用例参数
-	1，excel
-	2, yaml1
-	3, yaml2
+	1，excel 获取数据
+	2, yaml1 先解析文件，后获取数据
+	3, yaml2 利用 ddt.file_data() 直接解析获取数据
 	</td>
     <td></td>
     <td>9</td>
-    <td>9</td>
+    <td>8</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0</td>
     <td><a href="javascript:showClassDetail('c1.1',9)">Detail</a></td>
     <td>&nbsp;</td>
@@ -564,7 +564,7 @@
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>0.83 s</div>
+        <div>3.60 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -578,7 +578,7 @@
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>0.35 s</div>
+        <div>5.68 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -592,7 +592,7 @@
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>0.34 s</div>
+        <div>4.55 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -606,7 +606,7 @@
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>0.48 s</div>
+        <div>7.29 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -620,23 +620,44 @@
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>0.32 s</div>
+        <div>5.27 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
 </tr>
 
-<tr id='pt1.1.6' class='hiddenRow'>
-    <td class='passCase'>
+<tr id='et1.1.6' class='none'>
+    <td class='errorCase'>
         <div class='testcase'>test_api2_3</div>
     </td>
     <td style="color: #495057">
         <div></div>
     </td>
     <td style="color: #495057">
-        <div>0.33 s</div>
+        <div>9.81 s</div>
     </td>
-    <td colspan='5' align='center'>pass</td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_et1.1.6')" >
+        error</a>
+    <div id='div_et1.1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_et1.1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        et1.1.6: Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\ddt.py", line 182, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\gitproject\automated_api\src\testcase\test\testAPI.py", line 63, in test_api2
+    result = re.json()
+AttributeError: 'NoneType' object has no attribute 'json'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
     <td></td>
 </tr>
 
@@ -648,7 +669,7 @@
         <div>test_api3_1</div>
     </td>
     <td style="color: #495057">
-        <div>0.67 s</div>
+        <div>4.03 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -662,7 +683,7 @@
         <div>test_api3_2</div>
     </td>
     <td style="color: #495057">
-        <div>0.40 s</div>
+        <div>9.24 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -676,7 +697,7 @@
         <div>test_api3_3</div>
     </td>
     <td style="color: #495057">
-        <div>0.33 s</div>
+        <div>4.84 s</div>
     </td>
     <td colspan='5' align='center'>pass</td>
     <td></td>
@@ -687,9 +708,9 @@
                     <td> </td>
                     <td> </td>
                     <td>9</td>
-                    <td class="text text-success">9</td>
+                    <td class="text text-success">8</td>
                     <td class="text text-warning">0</td>
-                    <td class="text text-danger">0</td>
+                    <td class="text text-danger">1</td>
 					<td class="text" style="color: rgb(207 207 207);">0</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -711,7 +732,7 @@
         ],
         datasets: [
             {
-                data: [9, 0, 0, 0],
+                data: [8, 0, 1, 0],
                 backgroundColor: [
                     "#10c469",
                     "#f9c851",

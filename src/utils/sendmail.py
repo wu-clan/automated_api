@@ -7,9 +7,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from src.common.log import log
-from src.core.path_settings import EMAIL_FROM, EMAIL_HOST_SERVER, EMAIL_PASSWORD, EMAIL_PORT, EMAIL_TO, EMAIL_USER, \
-    HTML_REPORT, \
-    RESULT_TITLE
+from src.core.conf import settings
+from src.core.path_settings import HTML_REPORT
 
 
 class SendMail:
@@ -18,18 +17,19 @@ class SendMail:
         """获取最新测试报告"""
         self.dirs = os.listdir(HTML_REPORT)
         self.dirs.sort()
-        report = self.dirs[-1]
+        report = str(self.dirs[-1])
         log.info(f'获取测试报告: {report}')
         return report
 
     def _take_messages(self):
         """生成邮件的内容，和html报告附件"""
         self.msg = MIMEMultipart()
-        self.msg['Subject'] = RESULT_TITLE
+        self.msg['Subject'] = settings.RESULT_TITLE
         self.msg['date'] = time.strftime('%a, %d %b %Y %H:%M:%S %z')
 
         # 读取要发送的附件
-        with open(os.path.join(HTML_REPORT, self._get_report()), 'rb') as f:
+        _filename_name = self._get_report()
+        with open(os.path.join(HTML_REPORT, _filename_name), 'rb') as f:
             mail_body = str(f.read())
 
         # 邮件正文
@@ -39,16 +39,16 @@ class SendMail:
         # 邮件附件
         att1 = MIMEText(mail_body, 'base64', 'utf-8')
         att1["Content-Type"] = 'application/octet-stream'
-        att1["Content-Disposition"] = 'attachment; filename="TestReport.html"'
+        att1["Content-Disposition"] = f'attachment; filename={_filename_name}'
         self.msg.attach(att1)
 
     def send(self):
         """发送邮件"""
         self._take_messages()
         try:
-            smtp = smtplib.SMTP(EMAIL_HOST_SERVER, EMAIL_PORT)
-            smtp.login(EMAIL_USER, EMAIL_PASSWORD)
-            smtp.sendmail(EMAIL_FROM, EMAIL_TO, self.msg.as_string())
+            smtp = smtplib.SMTP(settings.EMAIL_HOST_SERVER, settings.EMAIL_PORT, timeout=settings.EMAIL_TIMEOUT)
+            smtp.login(settings.EMAIL_USER, settings.EMAIL_PASSWORD)
+            smtp.sendmail(settings.EMAIL_USER, settings.EMAIL_TO, self.msg.as_string())
             smtp.close()
             log.success("测试报告邮件发送成功")
         except Exception as e:

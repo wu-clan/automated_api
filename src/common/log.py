@@ -16,7 +16,7 @@ class Logger:
         """
         # 判定文件夹
         if not os.path.exists(LOG_PATH):
-            os.mkdir(LOG_PATH)
+            os.makedirs(LOG_PATH)
 
         # 日志文件名称
         log_file = os.path.join(LOG_PATH, "api_test.log")
