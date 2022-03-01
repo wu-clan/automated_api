@@ -34,12 +34,10 @@ class Settings(BaseSettings):
     EMAIL_PASSWORD: str = '********'
     EMAIL_TO: Union[str, List] = '********'
 
-    # 请求时是否使用token
-    USE_TOKEN: bool = False
-
     # 发送请求
-    REQUEST_TIMEOUT: Union[Union[int, float], List] = 5
-    REQUEST_INTERVAL: Union[int, float] = 2
+    REQUEST_TIMEOUT: Union[int, float, List] = 5
+    REQUEST_INTERVAL: Union[int, float] = 2  # 同步请求强制请求间隔
+    REQUEST_VERIFY: Union[str, bool] = False
 
 
 @lru_cache
