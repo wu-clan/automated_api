@@ -50,4 +50,5 @@ class WriteExcel:
 			self.wb.save(EXCEL_RESULT)
 		except Exception as e:
 			log.error(f'保存excel测试报告失败\n{e}')
-		log.success('保存excel测试报告成功')
+		else:
+			log.info('写入excel测试报告成功')

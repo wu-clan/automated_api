@@ -26,7 +26,10 @@ class WriteYaml:
         _filename = os.path.join(YAML_REPORT, filename)
         try:
             with open(_filename, encoding=encoding, mode='a') as f:
-                return yaml.dump(data, stream=f, allow_unicode=True)
+                result = yaml.dump(data, stream=f, allow_unicode=True)
         except Exception as e:
             log.error(f'写入文件 "{_filename}" 错误\n{e}')
             raise e
+        else:
+            log.info('写入yaml测试报告成功')
+            return result

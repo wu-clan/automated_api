@@ -5,7 +5,8 @@ import unittest
 from src.common.log import log
 
 
-class MyUnit(unittest.TestCase):
+class Unit(unittest.TestCase):
+    """执行同步"""
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -19,5 +20,15 @@ class MyUnit(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls) -> None:
-        log.info('全部测试执行完毕')
+        log.info('全部测试同步执行完毕')
+
+
+class AsyncUnit(unittest.IsolatedAsyncioTestCase):
+    """执行异步"""
+
+    async def asyncSetUp(self) -> None:
+        pass
+
+    async def asyncTearDown(self) -> None:
+        pass
 

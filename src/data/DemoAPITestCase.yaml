@@ -26,17 +26,3 @@
   msg: success
   result:
   tester:
--
-  model: 查询语录
-  ID: event_query_003
-  UseCase: 舔🐕语录
-  method: get
-  url: https://api.muxiaoguo.cn/api/tiangourj
-  params:
-  headers:
-  body:
-  type:
-  status_code: 200
-  msg: success
-  result:
-  tester:
