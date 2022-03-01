@@ -3,9 +3,9 @@
 from src.common.log import log
 
 
-def global_log(data) -> None:
+def log_current_req_data(data) -> None:
     """
-    全局测试用例请求统一日志头
+    日志记录当前请求数据
     :return:
     """
     log.info(f"---------- use case being executed -> {data['ID']} ----------")
