@@ -3,18 +3,16 @@
 
 import ddt
 
-from src.common.excel_report import WriteExcel
+from src.common.excel_operate import read_excel, write_excel
 from src.common.log import log
 from src.common.myunit import Unit
-from src.common.read_excel import ReadExcel
-from src.common.read_yaml import ReadYaml
 from src.common.send_requests import sync_request, sync_httpx
-from src.common.yaml_report import WriteYaml
+from src.common.yaml_operate import read_yaml, write_yaml
 from src.utils.get_yaml_file import get_yaml
 from src.utils.log_current_req import log_current_req_data
 
-testData = ReadExcel('DemoAPITestCase.xlsx').read_data()
-yamlData = ReadYaml('DemoAPITestCase.yaml').read_yaml()
+testData = read_excel('DemoAPITestCase.xlsx')
+yamlData = read_yaml('DemoAPITestCase.yaml')
 yamlFile = get_yaml('DemoAPITestCase.yaml')
 
 
@@ -44,11 +42,11 @@ class Demo_API(Unit):
 		if read_code == code and read_msg == msg:
 			status = 'PASS'
 			log.success(f"test result: {data['ID']} ----> {status}")
-			WriteExcel().write_data(row_num, status)
+			write_excel(row_num, status)
 		if read_code != code or read_msg != msg:
 			status = 'FAIL'
 			log.error(f"test result: {data['ID']} ----> {status}")
-			WriteExcel().write_data(row_num, status)
+			write_excel(row_num, status)
 		self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
 		self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
 
@@ -69,11 +67,11 @@ class Demo_API(Unit):
 		if read_code == code and read_msg == msg:
 			status = 'PASS'
 			log.success(f"test result: {data['ID']} ----> {status}")
-			WriteExcel().write_data(row_num, status)
+			write_excel(row_num, status)
 		if read_code != code or read_msg != msg:
 			status = 'FAIL'
 			log.error(f"test result: {data['ID']} ----> {status}")
-			WriteExcel().write_data(row_num, status)
+			write_excel(row_num, status)
 		self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
 		self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
 
@@ -93,11 +91,11 @@ class Demo_API(Unit):
 		if read_code == code and read_msg == msg:
 			status = 'PASS'
 			log.success(f"test result: {data['ID']} ----> {status}")
-			WriteYaml().write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
+			write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
 		if read_code != code or read_msg != msg:
 			status = 'FAIL'
 			log.error(f"test result: {data['ID']} ----> {status}")
-			WriteYaml().write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
+			write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
 		self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
 		self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
 
@@ -117,11 +115,11 @@ class Demo_API(Unit):
 		if read_code == code and read_msg == msg:
 			status = 'PASS'
 			log.success(f"test result: {data['ID']} ----> {status}")
-			WriteYaml().write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
+			write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
 		if read_code != code or read_msg != msg:
 			status = 'FAIL'
 			log.error(f"test result: {data['ID']} ----> {status}")
-			WriteYaml().write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
+			write_yaml(data=[{f"{None}": {'request': data, 'response': result}}])
 		self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
 		self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
 

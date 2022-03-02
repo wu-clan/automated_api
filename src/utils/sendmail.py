@@ -55,6 +55,7 @@ class SendMail:
             log.error(f'测试报告邮件发送失败\n{e}')
 
 
+send_email = SendMail()
+
 if __name__ == '__main__':
-    sendMail = SendMail()
-    sendMail.send()
+    send_email.send()

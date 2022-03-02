@@ -42,3 +42,5 @@ class DB:
         """
         self.conn.close()
 
+
+db = DB()

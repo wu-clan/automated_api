@@ -7,7 +7,7 @@ import unittest
 from src.common.html_report import html_report
 from src.common.log import log
 from src.core.path_settings import TEST_CASES
-from src.utils.sendmail import SendMail
+from src.utils.sendmail import send_email
 
 if __name__ == '__main__':
     try:
@@ -21,4 +21,4 @@ if __name__ == '__main__':
         log.error('运行出错！！！请检查！！！')
         raise e
     else:
-        SendMail().send()
+        send_email.send()
