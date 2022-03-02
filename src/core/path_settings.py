@@ -12,7 +12,7 @@ YAML_FILE = os.path.join(BASE_DIR, 'data')
 # 测试用例参数 xlsx 文件
 XLSX_FILE = os.path.join(BASE_DIR, 'data')
 
-# 测试用例参数模板文件
+# 测试用例参数文件
 TEMPLATE_XLSX_FILE = os.path.join(BASE_DIR, 'data', 'DemoAPITestCase.xlsx')
 
 # 测试用例路径
@@ -23,7 +23,6 @@ LOG_PATH = os.path.join(BASE_DIR, 'log')
 
 # EXCEL测试报告
 EXCEL_REPORT = os.path.join(BASE_DIR, 'report', 'excel_report')
-EXCEL_RESULT = os.path.join(BASE_DIR, 'report', 'excel_report', 'APITestResult.xlsx')
 
 # HTML测试报告
 HTML_REPORT = os.path.join(BASE_DIR, 'report', 'html_report')

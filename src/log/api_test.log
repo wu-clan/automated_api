@@ -1,80 +1,85 @@
-2022-02-27 01:24:35.689 | SUCCESS  | src.common.html_report:html_report:32 - 正在使用-html测试报告方式-进行测试
-2022-02-27 01:24:35.690 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:24:35.690 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_001 ----------
-2022-02-27 01:24:35.690 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: get，request url: https://api.muxiaoguo.cn/api/ymljjc
-2022-02-27 01:24:35.690 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: {"url": "https://api.muxiaoguo.cn"}
-2022-02-27 01:24:35.690 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type： , request content：
-2022-02-27 01:24:39.271 | INFO     | testAPI:test_api1:42 - response：{"code":200,"msg":"success","data":{"url":"https://api.muxiaoguo.cn","intercept":"正常","WordingTitle":"","Wording":""}}
-2022-02-27 01:24:39.271 | SUCCESS  | testAPI:test_api1:48 - test result: event_query_001 ----> PASS
-2022-02-27 01:24:39.290 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
-2022-02-27 01:24:39.292 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:24:39.292 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:24:39.292 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_002 ----------
-2022-02-27 01:24:39.292 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: post，request url: https://api.muxiaoguo.cn/api/chengyujielong
-2022-02-27 01:24:39.292 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: {"word": "Start"}
-2022-02-27 01:24:39.293 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type： , request content：
-2022-02-27 01:24:44.955 | INFO     | testAPI:test_api1:42 - response：{"code":200,"msg":"success","data":{"name":"铢两相称","pingyin":"zhū  liǎng  xiāng  chèn","jieshi":"形容两者轻重相当或优劣相等。","chuchu":"茅盾《大题小解》：\"于是指出何者为适如其分，铢两相称，何者被强调了非特殊点而忽略了特殊点，何者甚至被拉扯为‘四不像’。\"","startStr":"铢","endStr":"称","createTime":"2019-04-22 15:39:48"}}
-2022-02-27 01:24:44.955 | SUCCESS  | testAPI:test_api1:48 - test result: event_query_002 ----> PASS
-2022-02-27 01:24:44.972 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
-2022-02-27 01:24:44.973 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:24:44.974 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:24:44.974 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_003 ----------
-2022-02-27 01:24:44.974 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: get，request url: https://api.muxiaoguo.cn/api/tiangourj
-2022-02-27 01:24:44.974 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: 
-2022-02-27 01:24:44.974 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type： , request content：
-2022-02-27 01:24:49.501 | INFO     | testAPI:test_api1:42 - response：{"code":200,"msg":"success","data":{"comment":"跟你网恋被我爸发现了，我爸说在发现我网恋就打断我的腿，幸好不是胳膊还可以继续和你聊天，就算连胳膊都打断了，我的心里还有你的位置"}}
-2022-02-27 01:24:49.501 | SUCCESS  | testAPI:test_api1:48 - test result: event_query_003 ----> PASS
-2022-02-27 01:24:49.518 | SUCCESS  | src.common.excel_report:write_data:53 - 保存excel测试报告成功
-2022-02-27 01:24:49.520 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:24:49.520 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:24:49.520 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_001 ----------
-2022-02-27 01:24:49.520 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: get，request url: https://api.muxiaoguo.cn/api/ymljjc
-2022-02-27 01:24:49.520 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: {"url": "https://api.muxiaoguo.cn"}
-2022-02-27 01:24:49.521 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type：None , request content：None
-2022-02-27 01:24:56.802 | INFO     | testAPI:test_api2:66 - response：{"code":200,"msg":"success","data":{"url":"https://api.muxiaoguo.cn","intercept":"正常","WordingTitle":"","Wording":""}}
-2022-02-27 01:24:56.803 | SUCCESS  | testAPI:test_api2:72 - test result: event_query_001 ----> PASS
-2022-02-27 01:24:56.806 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:24:56.806 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:24:56.807 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_002 ----------
-2022-02-27 01:24:56.807 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: post，request url: https://api.muxiaoguo.cn/api/chengyujielong
-2022-02-27 01:24:56.807 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: {"word": "Start"}
-2022-02-27 01:24:56.807 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type：None , request content：None
-2022-02-27 01:25:02.076 | INFO     | testAPI:test_api2:66 - response：{"code":200,"msg":"success","data":{"name":"连明连夜","pingyin":"lián  míng  lián  yè","jieshi":"犹言通宵达旦。整整一夜，从天黑到天亮。","chuchu":"唐·白居易《水堂醉卧问杜三十一》诗：\"那似此堂帘幕底，连明连夜碧潺湲？\"","startStr":"连","endStr":"夜","createTime":"2019-04-22 15:39:48"}}
-2022-02-27 01:25:02.077 | SUCCESS  | testAPI:test_api2:72 - test result: event_query_002 ----> PASS
-2022-02-27 01:25:02.080 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:25:02.080 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:25:02.081 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_003 ----------
-2022-02-27 01:25:02.081 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: get，request url: https://api.muxiaoguo.cn/api/tiangourj
-2022-02-27 01:25:02.081 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: None
-2022-02-27 01:25:02.081 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type：None , request content：None
-2022-02-27 01:25:11.885 | ERROR    | src.common.send_requests:send_requests_by_yaml:91 - 请求发送失败
-HTTPSConnectionPool(host='api.muxiaoguo.cn', port=443): Read timed out. (read timeout=5)
-2022-02-27 01:25:11.885 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:25:11.886 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:25:11.886 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_001 ----------
-2022-02-27 01:25:11.886 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: get，request url: https://api.muxiaoguo.cn/api/ymljjc
-2022-02-27 01:25:11.887 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: {"url": "https://api.muxiaoguo.cn"}
-2022-02-27 01:25:11.887 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type：None , request content：None
-2022-02-27 01:25:15.913 | INFO     | testAPI:test_api3:90 - response：{"code":200,"msg":"success","data":{"url":"https://api.muxiaoguo.cn","intercept":"正常","WordingTitle":"","Wording":""}}
-2022-02-27 01:25:15.913 | SUCCESS  | testAPI:test_api3:96 - test result: event_query_001 ----> PASS
-2022-02-27 01:25:15.916 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:25:15.917 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:25:15.917 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_002 ----------
-2022-02-27 01:25:15.917 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: post，request url: https://api.muxiaoguo.cn/api/chengyujielong
-2022-02-27 01:25:15.917 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: {"word": "Start"}
-2022-02-27 01:25:15.917 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type：None , request content：None
-2022-02-27 01:25:25.153 | INFO     | testAPI:test_api3:90 - response：{"code":200,"msg":"success","data":{"name":"脸红筋暴","pingyin":"liǎn  hóng  jīn  bào","jieshi":"形容发急或发怒时面部红胀，青筋暴起的样子。","chuchu":"","startStr":"脸","endStr":"暴","createTime":"2019-04-22 15:39:48"}}
-2022-02-27 01:25:25.153 | SUCCESS  | testAPI:test_api3:96 - test result: event_query_002 ----> PASS
-2022-02-27 01:25:25.157 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:25:25.157 | INFO     | src.common.myunit:setUp:15 - new test start
-2022-02-27 01:25:25.157 | INFO     | src.utils.global_testcases_log_header:global_log:11 - ---------- use case being executed -> event_query_003 ----------
-2022-02-27 01:25:25.157 | INFO     | src.utils.global_testcases_log_header:global_log:12 - request method: get，request url: https://api.muxiaoguo.cn/api/tiangourj
-2022-02-27 01:25:25.157 | INFO     | src.utils.global_testcases_log_header:global_log:13 - request params: None
-2022-02-27 01:25:25.158 | INFO     | src.utils.global_testcases_log_header:global_log:14 - request body type：None , request content：None
-2022-02-27 01:25:29.996 | INFO     | testAPI:test_api3:90 - response：{"code":200,"msg":"success","data":{"comment":"其实我每月工资6000，但我只给你转2000，你以为我给你了全部。才不是，我一共舔了3个啦，我要舔的雨露均沾，才不会把你当成唯一。"}}
-2022-02-27 01:25:29.996 | SUCCESS  | testAPI:test_api3:96 - test result: event_query_003 ----> PASS
-2022-02-27 01:25:29.999 | INFO     | src.common.myunit:tearDown:18 - this test end
-2022-02-27 01:25:29.999 | INFO     | src.common.myunit:tearDownClass:22 - 全部测试执行完毕
-2022-02-27 01:25:30.008 | INFO     | src.utils.sendmail:_get_report:21 - 获取测试报告: html测试报告_2022-02-27 01_24_35.html
-2022-02-27 01:25:30.188 | ERROR    | src.utils.sendmail:send:55 - 测试报告邮件发送失败
-(535, b'Error: authentication failed')
+2022-03-02 18:41:17.681 | INFO     | src.common.html_report:html_report:32 - 正在使用-html测试报告方式-进行测试
+2022-03-02 18:41:17.681 | INFO     | src.common.myunit:setUp:16 - new test start
+2022-03-02 18:41:17.681 | INFO     | src.utils.log_current_req:log_current_req_data:11 - ---------- use case being executed -> event_query_001 ----------
+2022-03-02 18:41:17.681 | INFO     | src.utils.log_current_req:log_current_req_data:12 - request method: post，request url: https://api.66mz8.com/api/rand.sgimg.php
+2022-03-02 18:41:17.681 | INFO     | src.utils.log_current_req:log_current_req_data:13 - request params: {"format": "json"}
+2022-03-02 18:41:17.681 | INFO     | src.utils.log_current_req:log_current_req_data:14 - request body type： , request content：
+2022-03-02 18:41:18.141 | INFO     | testAPI:test_api1:38 - response：{
+    "code": 200,
+    "msg": "success",
+    "pic_url": null
+}
+2022-03-02 18:41:18.141 | SUCCESS  | testAPI:test_api1:44 - test result: event_query_001 ----> PASS
+2022-03-02 18:41:18.161 | INFO     | src.common.excel_operate:write_excel:83 - 写入excel测试报告成功
+2022-03-02 18:41:18.161 | INFO     | src.common.myunit:tearDown:19 - this test end
+2022-03-02 18:41:18.161 | INFO     | src.common.myunit:setUp:16 - new test start
+2022-03-02 18:41:18.161 | INFO     | src.utils.log_current_req:log_current_req_data:11 - ---------- use case being executed -> event_query_001 ----------
+2022-03-02 18:41:18.161 | INFO     | src.utils.log_current_req:log_current_req_data:12 - request method: post，request url: https://api.66mz8.com/api/rand.sgimg.php
+2022-03-02 18:41:18.161 | INFO     | src.utils.log_current_req:log_current_req_data:13 - request params: {"format": "json"}
+2022-03-02 18:41:18.161 | INFO     | src.utils.log_current_req:log_current_req_data:14 - request body type：None , request content：None
+2022-03-02 18:41:18.611 | INFO     | testAPI:test_api2:62 - response：{
+    "code": 200,
+    "msg": "success",
+    "pic_url": null
+}
+2022-03-02 18:41:18.611 | SUCCESS  | testAPI:test_api2:68 - test result: event_query_001 ----> PASS
+2022-03-02 18:41:18.611 | INFO     | src.common.yaml_operate:write_yaml:46 - 写入yaml测试报告成功
+2022-03-02 18:41:18.611 | INFO     | src.common.myunit:tearDown:19 - this test end
+2022-03-02 18:41:18.621 | INFO     | src.common.myunit:tearDownClass:23 - 全部测试同步执行完毕
+2022-03-02 18:41:18.631 | INFO     | src.utils.sendmail:_get_report:21 - 获取测试报告: html测试报告_2022-03-02 18_41_17.html
+2022-03-02 18:41:23.662 | ERROR    | src.utils.sendmail:send:55 - 测试报告邮件发送失败
+Connection unexpectedly closed: timed out
+2022-03-02 18:41:44.177 | INFO     | src.common.myunit:setUp:16 - new test start
+2022-03-02 18:41:44.177 | INFO     | src.utils.log_current_req:log_current_req_data:11 - ---------- use case being executed -> event_query_001 ----------
+2022-03-02 18:41:44.177 | INFO     | src.utils.log_current_req:log_current_req_data:12 - request method: post，request url: https://api.66mz8.com/api/rand.sgimg.php
+2022-03-02 18:41:44.177 | INFO     | src.utils.log_current_req:log_current_req_data:13 - request params: {"format": "json"}
+2022-03-02 18:41:44.177 | INFO     | src.utils.log_current_req:log_current_req_data:14 - request body type： , request content：
+2022-03-02 18:41:44.608 | INFO     | src.testcase.test.testAPI:test_api1:38 - response：{
+    "code": 200,
+    "msg": "success",
+    "pic_url": null
+}
+2022-03-02 18:41:44.618 | SUCCESS  | src.testcase.test.testAPI:test_api1:44 - test result: event_query_001 ----> PASS
+2022-03-02 18:41:44.628 | INFO     | src.common.excel_operate:write_excel:83 - 写入excel测试报告成功
+2022-03-02 18:41:44.628 | INFO     | src.common.myunit:tearDown:19 - this test end
+2022-03-02 18:41:44.628 | INFO     | src.common.myunit:setUp:16 - new test start
+2022-03-02 18:41:44.628 | INFO     | src.utils.log_current_req:log_current_req_data:11 - ---------- use case being executed -> event_query_001 ----------
+2022-03-02 18:41:44.638 | INFO     | src.utils.log_current_req:log_current_req_data:12 - request method: post，request url: https://api.66mz8.com/api/rand.sgimg.php
+2022-03-02 18:41:44.638 | INFO     | src.utils.log_current_req:log_current_req_data:13 - request params: {"format": "json"}
+2022-03-02 18:41:44.638 | INFO     | src.utils.log_current_req:log_current_req_data:14 - request body type：None , request content：None
+2022-03-02 18:41:45.077 | INFO     | src.testcase.test.testAPI:test_api2:62 - response：{
+    "code": 200,
+    "msg": "success",
+    "pic_url": null
+}
+2022-03-02 18:41:45.077 | SUCCESS  | src.testcase.test.testAPI:test_api2:68 - test result: event_query_001 ----> PASS
+2022-03-02 18:41:45.077 | INFO     | src.common.yaml_operate:write_yaml:46 - 写入yaml测试报告成功
+2022-03-02 18:41:45.077 | INFO     | src.common.myunit:tearDown:19 - this test end
+2022-03-02 18:41:45.077 | INFO     | src.common.myunit:tearDownClass:23 - 全部测试同步执行完毕
+2022-03-02 18:42:07.202 | INFO     | src.common.myunit:setUp:16 - new test start
+2022-03-02 18:42:07.202 | INFO     | src.utils.log_current_req:log_current_req_data:11 - ---------- use case being executed -> event_query_001 ----------
+2022-03-02 18:42:07.202 | INFO     | src.utils.log_current_req:log_current_req_data:12 - request method: post，request url: https://api.66mz8.com/api/rand.sgimg.php
+2022-03-02 18:42:07.202 | INFO     | src.utils.log_current_req:log_current_req_data:13 - request params: {"format": "json"}
+2022-03-02 18:42:07.202 | INFO     | src.utils.log_current_req:log_current_req_data:14 - request body type： , request content：
+2022-03-02 18:42:07.622 | INFO     | testAPI:test_api1:38 - response：{
+    "code": 200,
+    "msg": "success",
+    "pic_url": null
+}
+2022-03-02 18:42:07.622 | SUCCESS  | testAPI:test_api1:44 - test result: event_query_001 ----> PASS
+2022-03-02 18:42:07.642 | INFO     | src.common.excel_operate:write_excel:83 - 写入excel测试报告成功
+2022-03-02 18:42:07.642 | INFO     | src.common.myunit:tearDown:19 - this test end
+2022-03-02 18:42:07.642 | INFO     | src.common.myunit:setUp:16 - new test start
+2022-03-02 18:42:07.642 | INFO     | src.utils.log_current_req:log_current_req_data:11 - ---------- use case being executed -> event_query_001 ----------
+2022-03-02 18:42:07.642 | INFO     | src.utils.log_current_req:log_current_req_data:12 - request method: post，request url: https://api.66mz8.com/api/rand.sgimg.php
+2022-03-02 18:42:07.642 | INFO     | src.utils.log_current_req:log_current_req_data:13 - request params: {"format": "json"}
+2022-03-02 18:42:07.642 | INFO     | src.utils.log_current_req:log_current_req_data:14 - request body type：None , request content：None
+2022-03-02 18:42:08.102 | INFO     | testAPI:test_api2:62 - response：{
+    "code": 200,
+    "msg": "success",
+    "pic_url": null
+}
+2022-03-02 18:42:08.102 | SUCCESS  | testAPI:test_api2:68 - test result: event_query_001 ----> PASS
+2022-03-02 18:42:08.102 | INFO     | src.common.yaml_operate:write_yaml:46 - 写入yaml测试报告成功
+2022-03-02 18:42:08.102 | INFO     | src.common.myunit:tearDown:19 - this test end
+2022-03-02 18:42:08.102 | INFO     | src.common.myunit:tearDownClass:23 - 全部测试同步执行完毕

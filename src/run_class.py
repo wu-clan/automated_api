@@ -8,7 +8,6 @@ import unittest
 
 from src.common.html_report import html_report
 from src.testcase.test.testAPI import Demo_API
-from src.testcase.test.testAsyncAPI import Demo_AsyncAPI
 
 
 class RunTcClass:
@@ -30,7 +29,7 @@ if __name__ == '__main__':
     suite_tc = RunTcClass()
 
     # from 引入类，在这里（）内直接填入即可
-    suite_tc.test_class(Demo_AsyncAPI)
+    suite_tc.test_class(Demo_API)
 
     # 1.不输出到HTML测试报告
     runner = unittest.TextTestRunner(verbosity=2)

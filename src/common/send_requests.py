@@ -66,14 +66,13 @@ class SendRequests(object):
             self.body = body_data
         return [self.method, self.url, self.params, self.headers, self.body]
 
-    async def _async_req(self, data):
+    def _async_req(self, data):
         """
         excel异步请求参数集合
         :param data:
         :return:
         """
-        self.data = self._sync_req(data)
-        return self.data
+        return self._sync_req(data)
 
     def send_sync_requests(self, data) -> Union[httpx_res, requests_res]:
         """
@@ -123,7 +122,7 @@ class SendRequests(object):
             raise Exception(f'请求参数错误，仅 {err}')
         if self.requestMethod == 'async_httpx':
             try:
-                req = await self._async_req(data)
+                req = self._async_req(data)
                 async with httpx.AsyncClient(verify=settings.REQUEST_VERIFY) as client:
                     rq = await client.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
                                               timeout=settings.REQUEST_TIMEOUT)
@@ -134,7 +133,7 @@ class SendRequests(object):
 
         if self.requestMethod == 'aiohttp':
             try:
-                req = await self._async_req(data)
+                req = self._async_req(data)
                 async with aiohttp.ClientSession() as session:
                     rq = await session.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
                                                timeout=settings.REQUEST_TIMEOUT, ssl=settings.REQUEST_VERIFY)
@@ -165,6 +164,6 @@ async def async_aiohttp(data):
 __all__ = (
     'sync_request',
     'sync_httpx',
-    'async_httpx',
-    'async_aiohttp',
+    # 'async_httpx',
+    # 'async_aiohttp',
 )

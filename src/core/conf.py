@@ -36,7 +36,7 @@ class Settings(BaseSettings):
 
     # 发送请求
     REQUEST_TIMEOUT: Union[int, float, List] = 5
-    REQUEST_INTERVAL: Union[int, float] = 2  # 同步请求强制请求间隔
+    REQUEST_INTERVAL: Union[int, float] = 0.5  # 同步请求强制请求间隔
     REQUEST_VERIFY: Union[bool, str] = False
 
 

@@ -1,24 +1,10 @@
 -
-  model: 腾讯域名拦截检测
+  model: 搜狗高清壁纸
   ID: event_query_001
-  UseCase: 腾讯域名拦截检测
-  method: get
-  url: https://api.muxiaoguo.cn/api/ymljjc
-  params: '{"url": "https://api.muxiaoguo.cn"}'
-  headers:
-  body:
-  type: # data / json / Any
-  status_code: 200
-  msg: success
-  result:
-  tester:
--
-  model: 成语接龙
-  ID: event_query_002
-  UseCase: 成语接龙
+  UseCase: 搜狗高清壁纸
   method: post
-  url: https://api.muxiaoguo.cn/api/chengyujielong
-  params: '{"word": "Start"}'
+  url: https://api.66mz8.com/api/rand.sgimg.php
+  params: '{"format": "json"}'
   headers:
   body:
   type:

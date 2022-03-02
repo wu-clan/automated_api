@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import shutil
+import time
 
 import xlrd
 from openpyxl import load_workbook
@@ -10,7 +11,9 @@ from openpyxl.styles.colors import COLOR_INDEX
 
 from src.common.log import log
 from src.core.conf import settings
-from src.core.path_settings import XLSX_FILE, EXCEL_REPORT, EXCEL_RESULT, TEMPLATE_XLSX_FILE
+from src.core.path_settings import XLSX_FILE, EXCEL_REPORT, TEMPLATE_XLSX_FILE
+
+curr_time = time.strftime('%Y-%m-%d %H_%M_%S')
 
 
 def read_excel(filename: str, sheetName: str = 'Sheet1'):
@@ -42,18 +45,19 @@ def read_excel(filename: str, sheetName: str = 'Sheet1'):
         return None
 
 
-def write_excel(row_n, value):
+def write_excel(row_n: int, status: str, filename: str = f'APITestResult_{curr_time}.xlsx'):
     """
     写入测试结果
     :param row_n:数据所在行数
-    :param value: 测试结果值
+    :param status: 测试结果值
+    :param filename: 文件名
     :return
     """
     if not os.path.exists(EXCEL_REPORT):
         os.makedirs(EXCEL_REPORT)
-    if not os.path.exists(EXCEL_RESULT):
-        shutil.copyfile(TEMPLATE_XLSX_FILE, EXCEL_RESULT)
-    wb = load_workbook(EXCEL_RESULT)
+    _filename = os.path.join(EXCEL_REPORT, filename)
+    shutil.copyfile(TEMPLATE_XLSX_FILE, _filename)
+    wb = load_workbook(_filename)
     ws = wb.active
     font_green = Font(name='宋体', color=Color(rgb=COLOR_INDEX[3]), bold=True)
     font_red = Font(name='宋体', color=Color(rgb=COLOR_INDEX[2]), bold=True)
@@ -62,17 +66,17 @@ def write_excel(row_n, value):
     # 获数所在行数
     L_n = "L" + str(row_n)
     M_n = "M" + str(row_n)
-    if value == "PASS":
-        ws.cell(row_n, 12, value)
+    if status == "PASS":
+        ws.cell(row_n, 12, status)
         ws[L_n].font = font_green
-    if value == "FAIL":
-        ws.cell(row_n, 12, value)
+    if status == "FAIL":
+        ws.cell(row_n, 12, status)
         ws[L_n].font = font_red
     ws.cell(row_n, 13, settings.TESTER_NAME)
     ws[M_n].font = font_yellow
     ws[L_n].alignment = ws[M_n].alignment = align
     try:
-        wb.save(EXCEL_RESULT)
+        wb.save(_filename)
     except Exception as e:
         log.error(f'保存excel测试报告失败\n{e}')
     else:
