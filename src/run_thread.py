@@ -10,7 +10,7 @@ from src.core.path_settings import TEST_CASES
 
 def run_thread(suits, thread_num: int = 8):
     """
-    多线程运行all cases
+    多线程运行所有用例
     :param suits: 测试用例
     :param thread_num: 线程数
     :return:
@@ -26,7 +26,6 @@ if __name__ == '__main__':
     try:
         test_suite = unittest.defaultTestLoader.discover(TEST_CASES, 'test*.py')
         runner = run_thread(test_suite)
-        print(runner)
     except Exception as e:
         log.error('运行出错！！！请检查！！！')
         raise e

@@ -7,7 +7,7 @@
 import unittest
 
 from src.common.html_report import html_report
-from src.testcase.test.testAPI import Demo_API
+from src.testcase.test.testAPI import Demo_API, Demo_API2
 
 
 class RunTcClass:

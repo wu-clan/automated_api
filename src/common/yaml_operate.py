@@ -45,3 +45,12 @@ def write_yaml(filename=f'APITestResult_{curr_time}.yaml', data=None, encoding='
     else:
         log.info('写入yaml测试报告成功')
         return result
+
+
+def get_yaml(filename: str):
+    """
+    获取 yaml 测试数据文件
+    :param filename:
+    :return:
+    """
+    return os.path.join(YAML_FILE, filename)
