@@ -6,7 +6,7 @@ from src.common.log import log
 
 
 class Unit(unittest.TestCase):
-    """执行同步"""
+    """ 同步执行 """
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -24,7 +24,7 @@ class Unit(unittest.TestCase):
 
 
 class AsyncUnit(unittest.IsolatedAsyncioTestCase):
-    """执行异步"""
+    """ 异步执行, 同步请求/异步请求 都可用 """
 
     async def asyncSetUp(self) -> None:
         pass

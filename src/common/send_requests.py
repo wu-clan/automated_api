@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
+import asyncio
 import json
 import time
 from typing import Union
@@ -16,31 +17,17 @@ from src.core.conf import settings
 
 
 class SendRequests(object):
-    """发送请求数据"""
+    """ 发送请求 """
 
     def __init__(self, requestMethod: str):
         """
         :param requestMethod: 请求方式
-        sync:
-        '''
-        excel: 通过excel文件参数发送request请求
-        yaml: 通过yaml文件参数发送request请求
-        httpx_excel: 通过excel文件参数发送httpx_request请求
-        httpx_yaml: 通过yaml文件参数发送httpx_request请求
-        '''
-        async:
-        '''
-        ax_excel: 通过excel文件参数发送httpx_request请求
-        ax_yaml: 通过yaml文件参数发送httpx_request请求
-        aio_excel: 通过yaml文件参数发送aiohttp_request请求
-        aio_yaml: 通过yaml文件参数发送aiohttp_request请求
-        '''
         """
         self.requestMethod = requestMethod
 
-    def _sync_req(self, data):
+    def _sync_data(self, data):
         """
-        excel同步请求参数集合
+        excel同步请求数据
         :param data:
         :return:
         """
@@ -66,13 +53,12 @@ class SendRequests(object):
             self.body = body_data
         return [self.method, self.url, self.params, self.headers, self.body]
 
-    def _async_req(self, data):
+    async def _async_data(self, data):
         """
-        excel异步请求参数集合
-        :param data:
+        excel异步请求数据
         :return:
         """
-        return self._sync_req(data)
+        return await asyncio.get_event_loop().run_in_executor(None, self._sync_data, data)
 
     def send_sync_requests(self, data) -> Union[httpx_res, requests_res]:
         """
@@ -82,11 +68,11 @@ class SendRequests(object):
         """
         err = ['requests', 'httpx']
         if self.requestMethod not in err:
-            raise Exception(f'请求参数错误，仅 {err}')
+            raise ValueError(f'请求参数错误，仅 {err}')
 
         if self.requestMethod == 'requests':
             try:
-                req = self._sync_req(data)
+                req = self._sync_data(data)
                 # 消除安全警告
                 requests.packages.urllib3.disable_warnings()
                 # 请求间隔
@@ -100,7 +86,7 @@ class SendRequests(object):
 
         if self.requestMethod == 'httpx':
             try:
-                req = self._sync_req(data)
+                req = self._sync_data(data)
                 # 请求间隔
                 time.sleep(settings.REQUEST_INTERVAL)
                 with httpx.Client(verify=settings.REQUEST_VERIFY, follow_redirects=True) as client:
@@ -119,10 +105,13 @@ class SendRequests(object):
         """
         err = ['async_httpx', 'aiohttp']
         if self.requestMethod not in err:
-            raise Exception(f'请求参数错误，仅 {err}')
+            raise ValueError(f'请求参数错误，仅 {err}')
+
         if self.requestMethod == 'async_httpx':
             try:
-                req = self._async_req(data)
+                req = await self._async_data(data)
+                # 请求间隔
+                await asyncio.sleep(settings.REQUEST_INTERVAL)
                 async with httpx.AsyncClient(verify=settings.REQUEST_VERIFY) as client:
                     rq = await client.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
                                               timeout=settings.REQUEST_TIMEOUT)
@@ -133,7 +122,9 @@ class SendRequests(object):
 
         if self.requestMethod == 'aiohttp':
             try:
-                req = self._async_req(data)
+                req = await self._async_data(data)
+                # 请求间隔
+                await asyncio.sleep(settings.REQUEST_INTERVAL)
                 async with aiohttp.ClientSession() as session:
                     rq = await session.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
                                                timeout=settings.REQUEST_TIMEOUT, ssl=settings.REQUEST_VERIFY)
@@ -144,26 +135,48 @@ class SendRequests(object):
 
 
 def sync_request(data):
+    """
+    通过 request 发送同步请求
+    :param data:
+    :return:
+    """
     return SendRequests('requests').send_sync_requests(data)
 
 
 def sync_httpx(data):
+    """
+    通过 httpx 发送同步请求
+    :param data:
+    :return:
+    """
     return SendRequests('httpx').send_sync_requests(data)
 
 
 async def async_httpx(data):
+    """
+    通过 httpx 发送异步请求
+    :param data:
+    :return:
+    """
     rq = await SendRequests('async_httpx').send_async_requests(data)
     return rq
 
 
 async def async_aiohttp(data):
+    """
+    通过 aiohttp 发送异步请求
+    :param data:
+    :return:
+    """
     rq = await SendRequests('aiohttp').send_async_requests(data)
     return rq
 
 
 __all__ = (
+    # 同步
     'sync_request',
     'sync_httpx',
-    # 'async_httpx',
-    # 'async_aiohttp',
+    # 异步,就目前来讲比较鸡肋,建议优先考虑(同步请求+AsyncUnit)
+    'async_httpx',
+    'async_aiohttp',
 )
