@@ -78,7 +78,7 @@ class Demo_API(Unit):
 class Demo_API2(AsyncUnit):
 
     @ddt.data(*testData)
-    async def test_api1(self, data):
+    async def test_api3(self, data):
         log_current_req_data(data)
         # 发送请求
         req = await async_httpx(data)
@@ -94,7 +94,7 @@ class Demo_API2(AsyncUnit):
         self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
 
     @ddt.file_data(yamlFile)
-    async def test_api2(self, **data):
+    async def test_api4(self, **data):
         log_current_req_data(data)
         # 发送请求
         for _ in range(3):
