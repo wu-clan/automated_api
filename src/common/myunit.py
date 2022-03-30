@@ -17,15 +17,14 @@ class Unit(unittest.TestCase):
         pass
 
     def setUp(self) -> None:
-        log.info('new test start')
-        log.info(f'Start executing the test case: {self._testMethodName}')
+        log.info(f'----------------- Running case: {self._testMethodName} -----------------')
 
     def tearDown(self) -> None:
-        log.info('this test end')
+        log.info('end \n')
 
     @classmethod
     def tearDownClass(cls) -> None:
-        log.info('全部测试同步执行完毕')
+        log.info('同步测试用例执行完毕')
 
 
 class AsyncUnit(unittest.IsolatedAsyncioTestCase):
@@ -36,8 +35,8 @@ class AsyncUnit(unittest.IsolatedAsyncioTestCase):
         unittest.IsolatedAsyncioTestCase.__init__(self, *args, **kwargs)
 
     async def asyncSetUp(self) -> None:
-        log.info(f'Start executing the test case: {self._testMethodName}')
+        log.info(f'----------------- Running case: {self._testMethodName} -----------------')
 
     async def asyncTearDown(self) -> None:
-        pass
+        log.info('end \n')
 

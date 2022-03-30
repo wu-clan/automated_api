@@ -50,7 +50,7 @@ class SendMail:
             smtp.login(settings.EMAIL_USER, settings.EMAIL_PASSWORD)
             smtp.sendmail(settings.EMAIL_USER, settings.EMAIL_TO, self.msg.as_string())
         except Exception as e:
-            log.error(f'测试报告邮件发送失败\n{e}')
+            log.error(f'测试报告邮件发送失败: \n {e}')
         else:
             smtp.close()
             log.success("测试报告邮件发送成功")

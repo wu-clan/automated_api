@@ -8,9 +8,9 @@ from typing import Union
 import aiohttp
 import httpx
 import requests
-from aiohttp import ClientResponse as aiohttp_res
-from httpx import Response as httpx_res
-from requests import Response as requests_res
+from aiohttp import ClientResponse as aiohttp_rq
+from httpx import Response as httpx_rq
+from requests import Response as requests_rq
 
 from src.common.log import log
 from src.core.conf import settings
@@ -19,39 +19,40 @@ from src.core.conf import settings
 class SendRequests(object):
     """ 发送请求 """
 
-    def __init__(self, requestMethod: str):
+    def __init__(self, requestMethod: str = None):
         """
         :param requestMethod: 请求方式
         """
         self.requestMethod = requestMethod
 
-    def _sync_data(self, data):
+    @staticmethod
+    def _sync_data(data):
         """
         excel同步请求数据
         :param data:
         :return:
         """
-        self.method = data["method"]
-        self.url = data["url"]
+        method = data["method"]
+        url = data["url"]
         if data["params"] == "" or data["params"] is None:
-            self.params = None
+            params = None
         else:
-            self.params = eval(data["params"])
+            params = eval(data["params"])
         if data["headers"] == "" or data["headers"] is None:
-            self.headers = None
+            headers = None
         else:
-            self.headers = dict(data["headers"])
+            headers = dict(data["headers"])
         if data["body"] == "" or data["body"] is None:
             body_data = None
         else:
             body_data = eval(data["body"])
         if data["type"] == "data":
-            self.body = body_data
+            body = body_data
         elif data["type"] == "json":
-            self.body = json.dumps(body_data)
+            body = json.dumps(body_data)
         else:
-            self.body = body_data
-        return [self.method, self.url, self.params, self.headers, self.body]
+            body = body_data
+        return [method, url, params, headers, body]
 
     async def _async_data(self, data):
         """
@@ -60,7 +61,7 @@ class SendRequests(object):
         """
         return await asyncio.get_event_loop().run_in_executor(None, self._sync_data, data)
 
-    def send_sync_requests(self, data) -> Union[httpx_res, requests_res]:
+    def _send_sync_requests(self, data) -> Union[httpx_rq, requests_rq]:
         """
         发送同步请求
         :param data: 请求数据
@@ -81,7 +82,7 @@ class SendRequests(object):
                                                 verify=settings.REQUEST_VERIFY, timeout=settings.REQUEST_TIMEOUT)
                 return rq
             except Exception as e:
-                log.error(f'请求异常: {e}')
+                log.error(f'请求异常: \n {e}')
                 raise e
 
         if self.requestMethod == 'httpx':
@@ -94,10 +95,10 @@ class SendRequests(object):
                                         timeout=settings.REQUEST_TIMEOUT)
                     return rq
             except Exception as e:
-                log.error(f'请求异常: {e}')
+                log.error(f'请求异常: \n {e}')
                 raise e
 
-    async def send_async_requests(self, data) -> Union[httpx_res, aiohttp_res]:
+    async def _send_async_requests(self, data) -> Union[httpx_rq, aiohttp_rq]:
         """
         发送异步请求，如果接口服务器有速率限制，不建议使用
         :param data: 请求数据
@@ -117,7 +118,7 @@ class SendRequests(object):
                                               timeout=settings.REQUEST_TIMEOUT)
                     return rq
             except Exception as e:
-                log.error(f'请求异常: {e}')
+                log.error(f'请求异常: \n {e}')
                 raise e
 
         if self.requestMethod == 'aiohttp':
@@ -130,53 +131,63 @@ class SendRequests(object):
                                                timeout=settings.REQUEST_TIMEOUT, ssl=settings.REQUEST_VERIFY)
                     return rq
             except Exception as e:
-                log.error(f'请求异常: {e}')
+                log.error(f'请求异常: \n {e}')
                 raise e
 
+    def sync_request(self, data) -> requests_rq:
+        """
+        通过 request 发送同步请求
+        :param data:
+        :return:
+        """
+        self._req_log(data)
+        self.requestMethod = 'requests'
+        return self._send_sync_requests(data)
 
-def sync_request(data):
-    """
-    通过 request 发送同步请求
-    :param data:
-    :return:
-    """
-    return SendRequests('requests').send_sync_requests(data)
+    def sync_httpx(self, data) -> httpx_rq:
+        """
+        通过 httpx 发送同步请求
+        :param data:
+        :return:
+        """
+        self._req_log(data)
+        self.requestMethod = 'httpx'
+        return self._send_sync_requests(data)
+
+    async def async_httpx(self, data) -> httpx_rq:
+        """
+        通过 httpx 发送异步请求
+        :param data:
+        :return:
+        """
+        await asyncio.get_event_loop().run_in_executor(None, self._req_log, data)
+        self.requestMethod = 'async_httpx'
+        rq = await self._send_async_requests(data)
+        return rq
+
+    async def async_aiohttp(self, data) -> aiohttp_rq:
+        """
+        通过 aiohttp 发送异步请求
+        :param data:
+        :return:
+        """
+        await asyncio.get_event_loop().run_in_executor(None, self._req_log, data)
+        self.requestMethod = 'aiohttp'
+        rq = await self._send_async_requests(data)
+        return rq
+
+    @staticmethod
+    def _req_log(data):
+        log.info(f"正在调用的数据ID: --> {data['ID']}")
+        log.info(f"请求 method: {data['method']}")
+        log.info(f"请求 url: {data['url']}")
+        log.info(f"请求 params: {data['params']}")
+        log.info(f"请求 body 类型：{data['type']}")
+        log.info(f"请求 body：{data['body']}")
 
 
-def sync_httpx(data):
-    """
-    通过 httpx 发送同步请求
-    :param data:
-    :return:
-    """
-    return SendRequests('httpx').send_sync_requests(data)
+send_request = SendRequests()
 
-
-async def async_httpx(data):
-    """
-    通过 httpx 发送异步请求
-    :param data:
-    :return:
-    """
-    rq = await SendRequests('async_httpx').send_async_requests(data)
-    return rq
-
-
-async def async_aiohttp(data):
-    """
-    通过 aiohttp 发送异步请求
-    :param data:
-    :return:
-    """
-    rq = await SendRequests('aiohttp').send_async_requests(data)
-    return rq
-
-
-__all__ = (
-    # 同步
-    'sync_request',
-    'sync_httpx',
-    # 异步,就目前来讲比较鸡肋,建议优先考虑(同步请求+AsyncUnit)
-    'async_httpx',
-    'async_aiohttp',
-)
+__all__ = [
+    'send_request'
+]

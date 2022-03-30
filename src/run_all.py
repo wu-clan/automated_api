@@ -7,7 +7,7 @@ import unittest
 from src.common.html_report import html_report
 from src.common.log import log
 from src.core.path_settings import TEST_CASES
-from src.utils.sendmail import send_email
+from src.utils.send_mail import send_email
 
 if __name__ == '__main__':
     try:
