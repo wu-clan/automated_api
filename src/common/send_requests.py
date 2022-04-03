@@ -26,9 +26,9 @@ class SendRequests(object):
         self.requestMethod = requestMethod
 
     @staticmethod
-    def _sync_data(data):
+    def __sync_data(data):
         """
-        excel同步请求数据
+        同步请求数据
         :param data:
         :return:
         """
@@ -54,14 +54,14 @@ class SendRequests(object):
             body = body_data
         return [method, url, params, headers, body]
 
-    async def _async_data(self, data):
+    async def __async_data(self, data):
         """
-        excel异步请求数据
+        异步请求数据
         :return:
         """
-        return await asyncio.get_event_loop().run_in_executor(None, self._sync_data, data)
+        return await asyncio.get_event_loop().run_in_executor(None, self.__sync_data, data)
 
-    def _send_sync_requests(self, data) -> Union[httpx_rq, requests_rq]:
+    def __send_sync_requests(self, data) -> Union[httpx_rq, requests_rq]:
         """
         发送同步请求
         :param data: 请求数据
@@ -71,15 +71,23 @@ class SendRequests(object):
         if self.requestMethod not in err:
             raise ValueError(f'请求参数错误，仅 {err}')
 
+        # 记录请求参数
+        req_args = self.__sync_data(data)
+        req_method = req_args[0]
+        req_url = req_args[1]
+        req_params = req_args[2]
+        req_headers = req_args[3]
+        req_data = req_args[4]
+
         if self.requestMethod == 'requests':
             try:
-                req = self._sync_data(data)
                 # 消除安全警告
                 requests.packages.urllib3.disable_warnings()
                 # 请求间隔
                 time.sleep(settings.REQUEST_INTERVAL)
-                rq = requests.session().request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
-                                                verify=settings.REQUEST_VERIFY, timeout=settings.REQUEST_TIMEOUT)
+                rq = requests.session().request(method=req_method, url=req_url, params=req_params, headers=req_headers,
+                                                data=req_data, timeout=settings.REQUEST_TIMEOUT,
+                                                verify=settings.REQUEST_VERIFY)
                 return rq
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
@@ -87,18 +95,17 @@ class SendRequests(object):
 
         if self.requestMethod == 'httpx':
             try:
-                req = self._sync_data(data)
                 # 请求间隔
                 time.sleep(settings.REQUEST_INTERVAL)
                 with httpx.Client(verify=settings.REQUEST_VERIFY, follow_redirects=True) as client:
-                    rq = client.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
-                                        timeout=settings.REQUEST_TIMEOUT)
+                    rq = client.request(method=req_method, url=req_url, params=req_params, headers=req_headers,
+                                        data=req_data, timeout=settings.REQUEST_TIMEOUT)
                     return rq
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
                 raise e
 
-    async def _send_async_requests(self, data) -> Union[httpx_rq, aiohttp_rq]:
+    async def __send_async_requests(self, data) -> Union[httpx_rq, aiohttp_rq]:
         """
         发送异步请求，如果接口服务器有速率限制，不建议使用
         :param data: 请求数据
@@ -108,14 +115,21 @@ class SendRequests(object):
         if self.requestMethod not in err:
             raise ValueError(f'请求参数错误，仅 {err}')
 
+        # 记录请求参数
+        req_args = await self.__async_data(data)
+        req_method = req_args[0]
+        req_url = req_args[1]
+        req_params = req_args[2]
+        req_headers = req_args[3]
+        req_data = req_args[4]
+
         if self.requestMethod == 'async_httpx':
             try:
-                req = await self._async_data(data)
                 # 请求间隔
                 await asyncio.sleep(settings.REQUEST_INTERVAL)
                 async with httpx.AsyncClient(verify=settings.REQUEST_VERIFY) as client:
-                    rq = await client.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
-                                              timeout=settings.REQUEST_TIMEOUT)
+                    rq = await client.request(method=req_method, url=req_url, params=req_params, headers=req_headers,
+                                              data=req_data, timeout=settings.REQUEST_TIMEOUT)
                     return rq
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
@@ -123,12 +137,12 @@ class SendRequests(object):
 
         if self.requestMethod == 'aiohttp':
             try:
-                req = await self._async_data(data)
                 # 请求间隔
                 await asyncio.sleep(settings.REQUEST_INTERVAL)
                 async with aiohttp.ClientSession() as session:
-                    rq = await session.request(method=req[0], url=req[1], params=req[2], headers=req[3], data=req[4],
-                                               timeout=settings.REQUEST_TIMEOUT, ssl=settings.REQUEST_VERIFY)
+                    rq = await session.request(method=req_method, url=req_url, params=req_params, headers=req_headers,
+                                               data=req_data, timeout=settings.REQUEST_TIMEOUT,
+                                               ssl=settings.REQUEST_VERIFY)
                     return rq
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
@@ -142,7 +156,7 @@ class SendRequests(object):
         """
         self._req_log(data)
         self.requestMethod = 'requests'
-        return self._send_sync_requests(data)
+        return self.__send_sync_requests(data)
 
     def sync_httpx(self, data) -> httpx_rq:
         """
@@ -152,7 +166,7 @@ class SendRequests(object):
         """
         self._req_log(data)
         self.requestMethod = 'httpx'
-        return self._send_sync_requests(data)
+        return self.__send_sync_requests(data)
 
     async def async_httpx(self, data) -> httpx_rq:
         """
@@ -162,7 +176,7 @@ class SendRequests(object):
         """
         await asyncio.get_event_loop().run_in_executor(None, self._req_log, data)
         self.requestMethod = 'async_httpx'
-        rq = await self._send_async_requests(data)
+        rq = await self.__send_async_requests(data)
         return rq
 
     async def async_aiohttp(self, data) -> aiohttp_rq:
@@ -173,7 +187,7 @@ class SendRequests(object):
         """
         await asyncio.get_event_loop().run_in_executor(None, self._req_log, data)
         self.requestMethod = 'aiohttp'
-        rq = await self._send_async_requests(data)
+        rq = await self.__send_async_requests(data)
         return rq
 
     @staticmethod
