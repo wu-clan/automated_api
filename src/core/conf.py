@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     DB_CHARSET: str = 'utf8mb4'
 
     # 邮件发送
-    EMAIL_HOST_SERVER: str = 'smtp.163.com'
+    EMAIL_SERVER: str = 'smtp.163.com'
     EMAIL_PORT: int = 25
     EMAIL_USER: str = '222@126.com'
     EMAIL_PASSWORD: str = '********'
