@@ -19,11 +19,11 @@ from src.core.conf import settings
 class SendRequests(object):
     """ 发送请求 """
 
-    def __init__(self, requestMethod: str = None):
+    def __init__(self, request_method: str = None):
         """
-        :param requestMethod: 请求方式
+        :param request_method: 请求方式
         """
-        self.requestMethod = requestMethod
+        self.requestMethod = request_method
 
     @staticmethod
     def __sync_data(data):

@@ -28,11 +28,11 @@ class Settings(BaseSettings):
 
     # 邮件发送
     EMAIL_HOST_SERVER: str = 'smtp.163.com'
-    EMAIL_TIMEOUT: int = 5
     EMAIL_PORT: int = 25
     EMAIL_USER: str = '222@126.com'
     EMAIL_PASSWORD: str = '********'
     EMAIL_TO: Union[str, List] = '********'
+    EMAIL_SSL: bool = False
 
     # 发送请求
     REQUEST_TIMEOUT: Union[int, float, List] = 5

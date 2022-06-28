@@ -16,16 +16,16 @@ from src.core.path_settings import XLSX_FILE, EXCEL_REPORT, TEMPLATE_XLSX_FILE
 curr_time = time.strftime('%Y-%m-%d %H_%M_%S')
 
 
-def read_excel(filename: str, sheetName: str = 'Sheet1'):
+def read_excel(filename: str, sheet_name: str = 'Sheet1'):
     """
     读取excel文件
     :param filename:
-    :param sheetName:
+    :param sheet_name:
     :return:
     """
     file = os.path.join(XLSX_FILE, filename)
     data = xlrd.open_workbook(file)
-    table = data.sheet_by_name(sheetName)
+    table = data.sheet_by_name(sheet_name)
     # 获取总行数、总列数
     rows = table.nrows
     cols = table.ncols

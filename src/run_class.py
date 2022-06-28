@@ -7,21 +7,20 @@
 import unittest
 
 from src.common.html_report import html_report
-from src.testcase.test.testAPI import Demo_API, Demo_API2
+from src.testcase.test.test_api import DemoAPI, Demo_API2
 
 
 class RunTcClass:
 
-    # 重定向类为 TestSuite()
     def __init__(self):
         self.suites = unittest.TestLoader()
         self.suit = unittest.TestSuite()
 
-    def test_class(self, testCaseClass):
+    def test_class(self, testcase_class):
         """
-        :param testCaseClass: 引入的类名
+        :param testcase_class: 引入的类名
         """
-        suites = self.suites.loadTestsFromTestCase(testCaseClass)
+        suites = self.suites.loadTestsFromTestCase(testcase_class)
         self.suit.addTest(suites)
 
 
@@ -29,7 +28,7 @@ if __name__ == '__main__':
     suite_tc = RunTcClass()
 
     # from 引入类，在这里（）内直接填入即可
-    suite_tc.test_class(Demo_API)
+    suite_tc.test_class(DemoAPI)
 
     # 1.不输出到HTML测试报告
     runner = unittest.TextTestRunner(verbosity=2)

@@ -15,7 +15,7 @@ yamlFile = get_yaml('DemoAPITestCase.yaml')
 
 
 @ddt.ddt
-class Demo_API(Unit):
+class DemoAPI(Unit):
     """
     三种方式编写用例参数
     1，excel 获取数据
