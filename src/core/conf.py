@@ -44,11 +44,8 @@ class Settings(BaseSettings):
 def get_settings():
     """
     读取配置优化
-    :return:
     """
     return Settings()
 
 
 settings = get_settings()
-
-__all__ = ['settings']

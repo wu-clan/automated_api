@@ -10,7 +10,7 @@ class Unit(unittest.TestCase):
 
     def __init__(self, *args, **kwargs):
         # 继承 unittest.TestCase 的__init__,尤为重要
-        unittest.TestCase.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -20,23 +20,22 @@ class Unit(unittest.TestCase):
         log.info(f'----------------- Running case: {self._testMethodName} -----------------')
 
     def tearDown(self) -> None:
-        log.info('end \n')
+        log.info('end')
 
     @classmethod
     def tearDownClass(cls) -> None:
-        log.info('同步测试用例执行完毕')
+        pass
 
 
 class AsyncUnit(unittest.IsolatedAsyncioTestCase):
-    """ 异步执行, 同步请求/异步请求 都可用 """
+    """ 异步执行 """
 
     def __init__(self, *args, **kwargs):
         # 继承 unittest.IsolatedAsyncioTestCase 的__init__,尤为重要
-        unittest.IsolatedAsyncioTestCase.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     async def asyncSetUp(self) -> None:
         log.info(f'----------------- Running case: {self._testMethodName} -----------------')
 
     async def asyncTearDown(self) -> None:
-        log.info('end \n')
-
+        log.info('end')

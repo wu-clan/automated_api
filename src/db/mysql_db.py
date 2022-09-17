@@ -29,6 +29,8 @@ class DB:
     def execute(self, sql):
         """
         数据库操作执行
+
+        :param sql:
         :return:
         """
         try:
@@ -36,13 +38,14 @@ class DB:
             self.conn.commit()
         except Exception as e:
             self.conn.rollback()
-            log.error(f'执行 {sql} 失败 \n {e}')
+            log.error(f'执行 {sql} 失败: {e}')
         else:
             self.close()
 
     def close(self):
         """
         关闭数据库
+
         :return:
         """
         self.cursor.close()

@@ -2,196 +2,151 @@
 # _*_ coding:utf-8 _*_
 import asyncio
 import json
+import platform
 import time
-from typing import Union
 
 import aiohttp
+import asyncer
 import httpx
 import requests
-from aiohttp import ClientResponse as aiohttp_rq
-from httpx import Response as httpx_rq
-from requests import Response as requests_rq
 
 from src.common.log import log
 from src.core.conf import settings
 
 
-class SendRequests(object):
+class SendRequests:
     """ 发送请求 """
-
-    def __init__(self, request_method: str = None):
-        """
-        :param request_method: 请求方式
-        """
-        self.requestMethod = request_method
 
     @staticmethod
     def __sync_data(data):
         """
         同步请求数据
+
         :param data:
         :return:
         """
         method = data["method"]
         url = data["url"]
-        if data["params"] == "" or data["params"] is None:
-            params = None
-        else:
-            params = eval(data["params"])
-        if data["headers"] == "" or data["headers"] is None:
-            headers = None
-        else:
-            headers = dict(data["headers"])
-        if data["body"] == "" or data["body"] is None:
-            body_data = None
-        else:
-            body_data = eval(data["body"])
-        if data["type"] == "data":
-            body = body_data
-        elif data["type"] == "json":
-            body = json.dumps(body_data)
-        else:
-            body = body_data
-        return [method, url, params, headers, body]
+        params = None if data["params"] == "" or data["params"] is None else eval(data["params"])
+        headers = None if data["headers"] == "" or data["headers"] is None else dict(data["headers"])
+        body_data = None if data["body"] == "" or data["body"] is None else eval(data["body"])
+        info = {
+            'method': method,
+            'url': url,
+            'params': params,
+            'headers': headers,
+            'data': body_data if data['type'] != 'json' else None,
+            'json': json.dumps(body_data) if data['type'] == 'json' else None
+        }
+        return info
 
     async def __async_data(self, data):
         """
         异步请求数据
+
+        :param data:
         :return:
         """
-        return await asyncio.get_event_loop().run_in_executor(None, self.__sync_data, data)
+        return await asyncer.asyncify(self.__sync_data)(data)
 
-    def __send_sync_requests(self, data) -> Union[httpx_rq, requests_rq]:
+    def send_sync_request(self, data, *, request_engin: str = 'requests', **kwargs):
         """
         发送同步请求
+
         :param data: 请求数据
+        :param request_engin:
         :return: response
         """
-        err = ['requests', 'httpx']
-        if self.requestMethod not in err:
-            raise ValueError(f'请求参数错误，仅 {err}')
+        engin = ['requests', 'httpx']
+        if request_engin not in engin:
+            raise ValueError(f'请求发起失败，请使用合法的请求引擎')
 
-        # 记录请求参数
-        req_args = self.__sync_data(data)
-        req_method = req_args[0]
-        req_url = req_args[1]
-        req_params = req_args[2]
-        req_headers = req_args[3]
-        req_data = req_args[4]
+        request_args = self.__sync_data(data)
 
-        if self.requestMethod == 'requests':
+        self.log_request_up(data)
+
+        if request_engin == 'requests':
             try:
                 # 消除安全警告
-                requests.packages.urllib3.disable_warnings()
+                requests.packages.urllib3.disable_warnings()  # noqa
                 # 请求间隔
                 time.sleep(settings.REQUEST_INTERVAL)
-                rq = requests.session().request(method=req_method, url=req_url, params=req_params, headers=req_headers,
-                                                data=req_data, timeout=settings.REQUEST_TIMEOUT,
-                                                verify=settings.REQUEST_VERIFY)
-                return rq
+                response = requests.session().request(
+                    **request_args,
+                    timeout=settings.REQUEST_TIMEOUT,
+                    verify=settings.REQUEST_VERIFY,
+                    **kwargs
+                )
+                return response
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
                 raise e
-
-        if self.requestMethod == 'httpx':
+        elif request_engin == 'httpx':
             try:
                 # 请求间隔
                 time.sleep(settings.REQUEST_INTERVAL)
                 with httpx.Client(verify=settings.REQUEST_VERIFY, follow_redirects=True) as client:
-                    rq = client.request(method=req_method, url=req_url, params=req_params, headers=req_headers,
-                                        data=req_data, timeout=settings.REQUEST_TIMEOUT)
-                    return rq
+                    response = client.request(
+                        **request_args,
+                        timeout=settings.REQUEST_TIMEOUT,
+                        **kwargs
+                    )
+                    return response
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
                 raise e
 
-    async def __send_async_requests(self, data) -> Union[httpx_rq, aiohttp_rq]:
+    async def send_async_request(self, data, *, request_engin: str = 'httpx', **kwargs):
         """
-        发送异步请求，如果接口服务器有速率限制，不建议使用
+        发送异步请求
+
         :param data: 请求数据
+        :param request_engin:
         :return: response
         """
-        err = ['async_httpx', 'aiohttp']
-        if self.requestMethod not in err:
-            raise ValueError(f'请求参数错误，仅 {err}')
+        engin = ['httpx', 'aiohttp']
+        if request_engin not in engin:
+            raise ValueError(f'请求发起失败，请使用合法的请求引擎')
 
-        # 记录请求参数
-        req_args = await self.__async_data(data)
-        req_method = req_args[0]
-        req_url = req_args[1]
-        req_params = req_args[2]
-        req_headers = req_args[3]
-        req_data = req_args[4]
+        request_args = await self.__async_data(data)
 
-        if self.requestMethod == 'async_httpx':
+        await asyncer.asyncify(self.log_request_up)(data)
+
+        if request_engin == 'httpx':
             try:
                 # 请求间隔
                 await asyncio.sleep(settings.REQUEST_INTERVAL)
                 async with httpx.AsyncClient(verify=settings.REQUEST_VERIFY) as client:
-                    rq = await client.request(method=req_method, url=req_url, params=req_params, headers=req_headers,
-                                              data=req_data, timeout=settings.REQUEST_TIMEOUT)
-                    return rq
+                    response = await client.request(
+                        **request_args,
+                        timeout=settings.REQUEST_TIMEOUT,
+                        **kwargs
+                    )
+                    return response
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
                 raise e
-
-        if self.requestMethod == 'aiohttp':
+        elif request_engin == 'aiohttp':
+            # 不建议使用 aiohttp, 他很蠢
+            # 如果你喜欢用, 在触发一个不影响程序的错误时: RuntimeError: Event loop is closed
+            # 请查看 issue -> https://github.com/aio-libs/aiohttp/issues/4324
             try:
                 # 请求间隔
                 await asyncio.sleep(settings.REQUEST_INTERVAL)
                 async with aiohttp.ClientSession() as session:
-                    rq = await session.request(method=req_method, url=req_url, params=req_params, headers=req_headers,
-                                               data=req_data, timeout=settings.REQUEST_TIMEOUT,
-                                               ssl=settings.REQUEST_VERIFY)
-                    return rq
+                    response = await session.request(
+                        **request_args,
+                        timeout=settings.REQUEST_TIMEOUT,
+                        ssl=settings.REQUEST_VERIFY,
+                        **kwargs
+                    )
+                    return response
             except Exception as e:
                 log.error(f'请求异常: \n {e}')
                 raise e
 
-    def sync_request(self, data) -> requests_rq:
-        """
-        通过 request 发送同步请求
-        :param data:
-        :return:
-        """
-        self._req_log(data)
-        self.requestMethod = 'requests'
-        return self.__send_sync_requests(data)
-
-    def sync_httpx(self, data) -> httpx_rq:
-        """
-        通过 httpx 发送同步请求
-        :param data:
-        :return:
-        """
-        self._req_log(data)
-        self.requestMethod = 'httpx'
-        return self.__send_sync_requests(data)
-
-    async def async_httpx(self, data) -> httpx_rq:
-        """
-        通过 httpx 发送异步请求
-        :param data:
-        :return:
-        """
-        await asyncio.get_event_loop().run_in_executor(None, self._req_log, data)
-        self.requestMethod = 'async_httpx'
-        rq = await self.__send_async_requests(data)
-        return rq
-
-    async def async_aiohttp(self, data) -> aiohttp_rq:
-        """
-        通过 aiohttp 发送异步请求
-        :param data:
-        :return:
-        """
-        await asyncio.get_event_loop().run_in_executor(None, self._req_log, data)
-        self.requestMethod = 'aiohttp'
-        rq = await self.__send_async_requests(data)
-        return rq
-
     @staticmethod
-    def _req_log(data):
+    def log_request_up(data):
         log.info(f"正在调用的数据ID: --> {data['ID']}")
         log.info(f"请求 method: {data['method']}")
         log.info(f"请求 url: {data['url']}")
@@ -201,7 +156,3 @@ class SendRequests(object):
 
 
 send_request = SendRequests()
-
-__all__ = [
-    'send_request'
-]

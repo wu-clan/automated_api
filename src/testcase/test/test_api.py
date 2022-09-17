@@ -1,61 +1,53 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-
+import asyncer
 import ddt
 
-from src.common.excel_operate import read_excel, write_excel
+from src.common.excel_handler import read_excel, write_excel
 from src.common.log import log
 from src.common.myunit import Unit, AsyncUnit
 from src.common.send_requests import send_request
-from src.common.yaml_operate import read_yaml, write_yaml, get_yaml
+from src.common.yaml_handler import read_yaml, write_yaml, get_yaml
 
-testData = read_excel('DemoAPITestCase.xlsx')
-yamlData = read_yaml('DemoAPITestCase.yaml')
-yamlFile = get_yaml('DemoAPITestCase.yaml')
+excel_data = read_excel('DemoAPITestCase.xlsx')
+yaml_data = read_yaml('DemoAPITestCase.yaml')
+yaml_file = get_yaml('DemoAPITestCase.yaml')
 
 
 @ddt.ddt
 class DemoAPI(Unit):
-    """
-    三种方式编写用例参数
-    1，excel 获取数据
-    2, yaml1 先解析文件，后获取数据, ddt用法同excel
-    3, yaml2 利用 ddt.file_data() 直接解析获取数据
-    """
 
-    @ddt.data(*testData)
+    @ddt.data(*excel_data)
     def test_api1(self, data):
         row_num = int(data['ID'].split("_")[2]) + 1
         # 发送请求
-        req = send_request.sync_request(data)
+        response = send_request.send_sync_request(data)
         # 获取服务端返回的值
-        result = req.json()
+        result = response.json()
         code = int(result['code'])
         msg = str(result['msg'])
-        log.info("response：%s" % req.content.decode("utf-8"))
         # 获取excel表格数据的状态码和消息
         read_code = int(data["status_code"])
         read_msg = data["msg"]
         if read_code == code and read_msg == msg:
             status = 'PASS'
             log.success(f"test result: {data['ID']} ----> {status}")
-            write_excel(row_num, status)
+            write_excel(row_num=row_num, status=status)
         if read_code != code or read_msg != msg:
             status = 'FAIL'
             log.error(f"test result: {data['ID']} ----> {status}")
-            write_excel(row_num, status)
-        self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
-        self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
+            write_excel(row_num=row_num, status=status)
+        self.assertEqual(code, read_code, f"返回实际结果是->: {code}")
+        self.assertEqual(msg, read_msg, f"返回实际结果是->: {code}")
 
-    @ddt.file_data(yamlFile)
+    @ddt.file_data(yaml_file)
     def test_api2(self, **data):
         # 发送请求
-        req = send_request.sync_httpx(data)
+        req = send_request.send_sync_request(data, request_engin='httpx')
         # 获取服务端返回的值
         result = req.json()
         code = int(result['code'])
         msg = str(result['msg'])
-        log.info("response：%s" % req.content.decode("utf-8"))
         # 获取excel表格数据的状态码和消息
         read_code = int(data["status_code"])
         read_msg = data["msg"]
@@ -67,50 +59,55 @@ class DemoAPI(Unit):
             status = 'FAIL'
             log.error(f"test result: {data['ID']} ----> {status}")
             write_yaml(data=[{status: {'request': data, 'response': result}}])
-        self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
-        self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
+        self.assertEqual(code, read_code, f"返回实际结果是->: {code}")
+        self.assertEqual(msg, read_msg, f"返回实际结果是->: {code}")
 
 
 @ddt.ddt
-class Demo_API2(AsyncUnit):
+class DemoAPI2(AsyncUnit):
 
-    @ddt.data(*testData)
+    @ddt.data(*yaml_data)
     async def test_api3(self, data):
+        row_num = int(data['ID'].split("_")[2]) + 1
         # 发送请求
-        req = await send_request.async_httpx(data)
+        response = await send_request.send_async_request(data)
         # 获取服务端返回的值
-        result = req.json()
+        result = response.json()
         code = int(result['code'])
         msg = str(result['msg'])
-        log.info("response：%s" % req.content.decode("utf-8"))
         # 获取excel表格数据的状态码和消息
         read_code = int(data["status_code"])
         read_msg = data["msg"]
-        try:
-            self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
-            self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
-        except Exception:
-            log.error(f"test result: {data['ID']} ----> FAIL")
-        else:
-            log.success(f"test result: {data['ID']} ----> PASS")
+        if read_code == code and read_msg == msg:
+            status = 'PASS'
+            log.success(f"test result: {data['ID']} ----> {status}")
+            await asyncer.asyncify(write_excel)(row_num=row_num, status=status)
+        if read_code != code or read_msg != msg:
+            status = 'FAIL'
+            log.error(f"test result: {data['ID']} ----> {status}")
+            await asyncer.asyncify(write_excel)(row_num=row_num, status=status)
+        self.assertEqual(code, read_code, f"返回实际结果是->: {code}")
+        self.assertEqual(msg, read_msg, f"返回实际结果是->: {code}")
 
-    @ddt.file_data(yamlFile)
+    @ddt.file_data(yaml_file)
     async def test_api4(self, **data):
         # 发送请求
-        try:
-            for _ in range(3):
-                req = await send_request.async_aiohttp(data)
-                # 获取服务端返回的值
-                result = await req.json()  # 注意这里和 httpx 不同
-                code = int(result['code'])
-                msg = str(result['msg'])
-                log.info("response：%s" % await req.text())
-                # 获取excel表格数据的状态码和消息
-                read_code = int(data["status_code"])
-                read_msg = data["msg"]
-                self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
-                self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
-        except Exception:
-            log.error(f"test result: {data['ID']} ----> FAIL")
-        else:
-            log.success(f"test result: {data['ID']} ----> PASS")
+        response = await send_request.send_async_request(data, request_engin='aiohttp')
+        # 获取服务端返回的值
+        result = await response.json()  # 注意这里和 httpx 不同
+        code = int(result['code'])
+        msg = str(result['msg'])
+        # 获取excel表格数据的状态码和消息
+        read_code = int(data["status_code"])
+        read_msg = data["msg"]
+        if read_code == code and read_msg == msg:
+            status = 'PASS'
+            log.success(f"test result: {data['ID']} ----> {status}")
+            await asyncer.asyncify(write_yaml)(data=[{status: {'request': data, 'response': result}}])
+        if read_code != code or read_msg != msg:
+            status = 'FAIL'
+            log.error(f"test result: {data['ID']} ----> {status}")
+            await asyncer.asyncify(write_yaml)(data=[{status: {'request': data, 'response': result}}])
+        self.assertEqual(code, read_code, "返回实际结果是->: %s" % code)
+        self.assertEqual(msg, read_msg, "返回实际结果是->: %s" % msg)
+        # aiohttp 会触发 RuntimeError: Event loop is closed, 请移步文件 send_request.py 查看说明

@@ -1,17 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 import unittest
 from concurrent.futures.thread import ThreadPoolExecutor
 
-from src.common.log import log
-from src.core.path_settings import TEST_CASES
+from src.common.test_report import add_testcase
 
 
 def run_thread(suits, thread_num: int = 8):
     """
     多线程运行所有用例
-    :param suits: 测试用例
+
+    :param suits: 测试
     :param thread_num: 线程数
     :return:
     """
@@ -23,9 +22,5 @@ def run_thread(suits, thread_num: int = 8):
 
 
 if __name__ == '__main__':
-    try:
-        test_suite = unittest.defaultTestLoader.discover(TEST_CASES, 'test*.py')
-        runner = run_thread(test_suite)
-    except Exception as e:
-        log.error('运行出错！！！请检查！！！')
-        raise e
+    test_suite = add_testcase()
+    runner = run_thread(test_suite)

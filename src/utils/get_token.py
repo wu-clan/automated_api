@@ -12,6 +12,7 @@ _token_name: str = 'access_token'
 def get_token() -> None:
     """
     获取token
+
     :return:
     """
     try:
