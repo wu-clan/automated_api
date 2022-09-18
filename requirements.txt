@@ -1,0 +1,14 @@
+pymysql==0.9.3
+pydantic==1.8.2
+loguru==0.5.3
+requests==2.25.1
+pyyaml==5.4.1
+xlrd==1.2.0
+openpyxl==3.0.7
+Jinja2==3.1.2
+ddt==1.4.2
+httpx==0.23.0
+aiohttp==3.8.1
+DBUtils==3.0.2
+XTestRunner==1.4.6
+asyncer==0.0.1

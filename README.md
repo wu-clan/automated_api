@@ -1,37 +1,100 @@
-# Python自动化之路
+# python接口自动化测试框架
 
-#### 介绍
-python自动化之路：UI，接口，App......
+## 🧠设计思路
 
-#### 软件架构
-软件架构说明
+- python3 + unittest + ddt + requests / httpx / aiohttp
 
+## 👀目录结构介绍
 
-#### 安装教程
+- common/: 公共类
+- core/: 配置
+- data/: 测试用例数据
+- db/: 数据库
+- log/: 日志
+- templates/: 模板文件
+- report/: 测试报告
+- testcase/: 接口自动化测试项目和用例
+- utils/: 工具包
+- run_*.py: 执行测试用例主程序入口
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 👨‍💻👩‍💻使用
 
-#### 使用说明
+```shell
+# 下载
+git clone https://gitee.com/wu_cl/automated_api.git
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+# 安装依赖包
+pip install -r requirements.txt
+```
 
-#### 参与贡献
+### 1: 指定用例所在目录
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+```
+testcase 目录下的一级文件夹视为项目目录
 
+在 config.py 配置中修改 PROJECT 为对应的项目目录名即可
+```
 
-#### 码云特技
+### 2: 如何运行测试
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+```
+run_all.py 运行项目下所有的用例
+
+run_class.py 运行项目下指定测试类
+
+run_thead.py 线程池运行项目下所有测试用例
+```
+
+### 3: 如何查看报告
+
+```
+运行完之后到 report 文件夹下查看
+```
+
+## ❓问题相关
+
+### 1: 为什么日志没有内容
+
+```
+日志内容需要手动写入, 详细示例demo中几乎都有体现, 请自行查看
+```
+
+### 2: 为什么没有测试报告
+
+```
+html 仅执行 run_all.py 时自动创建
+excel 需手动写入, 详情查看测试用例: testAPI.py
+yaml 需手动写入, 详情查看测试用例: testAPI.py
+```
+
+### 2: excel 测试报告有问题
+
+```
+1: excel 测试数据要严格按照模板格式编写, 文件名字可以变, 文件中参数顺序不可以变,
+存放位置与测试项目同步
+
+2: excel 测试报告名称可自定义或默认
+```
+
+### 3: yaml 测试报告有问题
+
+```
+1: yaml 测试数据要严格按照模板格式编写, 文件名字可以变, 文件中参数顺序不可以变,
+存放位置与测试项目同步
+
+2: yaml 测试报告名称可自定义或默认
+```
+
+## 效果预览
+
+日志:
+
+![日志](src/static/日志输出.jpg)
+
+控制台:
+
+![控制台](src/static/控制台输出.jpg)
+
+HTML报告:
+
+![HTML报告](src/static/HTML测试报告.png)
